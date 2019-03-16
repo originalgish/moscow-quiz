@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 
-import renderTextField from '../../../components/renderTextField'
+import RenderTextField from '../../../components/RenderTextField'
+import RenderButton from '../../../components/RenderButton'
 import { phoneMask } from '../helpers/inputMask'
 
 import submit from './utils/submit'
@@ -17,10 +18,8 @@ class GetCode extends Component {
     const { handleSubmit, valid, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
-        <Field name="phone" component={renderTextField} label="Телефон" type="tel" {...phoneMask} />
-        <button type="submit" disabled={!valid || submitting}>
-          Получить код
-        </button>
+        <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
+        <RenderButton type="submit" disabled={!valid || submitting} text="Получить код" color="primary" />
       </form>
     )
   }

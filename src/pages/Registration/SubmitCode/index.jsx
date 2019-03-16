@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 
-import renderTextField from '../../../components/renderTextField'
+import RenderTextField from '../../../components/RenderTextField'
+import RenderButton from '../../../components/RenderButton'
 
 import { onlyFiveNumbers } from '../helpers/normalize'
 
@@ -11,7 +12,7 @@ import validate from './utils/validate'
 
 import './index.scss'
 
-class SendCode extends Component {
+class SubmitCode extends Component {
   state = {}
 
   render() {
@@ -20,24 +21,27 @@ class SendCode extends Component {
       <form onSubmit={handleSubmit}>
         <Field
           name="confirmationCode"
-          component={renderTextField}
+          component={RenderTextField}
           label="Код подтверждения"
           type="number"
           normalize={onlyFiveNumbers}
         />
-        <button type="submit" disabled={!valid || submitting}>
-          Отправить код
-        </button>
+        <RenderButton type="submit" disabled={!valid || submitting} text="Отправить код" color="primary" />
+
+        <div>
+          <RenderButton type="submit" disabled={true} text="Выслать код" color="secondary" />
+          <span>повторно через {`2:00`}</span>
+        </div>
       </form>
     )
   }
 }
 
-SendCode = reduxForm({
-  form: 'SendCode',
+SubmitCode = reduxForm({
+  form: 'SubmitCode',
   onSubmit: submit,
   validate
-})(SendCode)
+})(SubmitCode)
 
 const mapStateToProps = () => ({})
 
@@ -46,4 +50,4 @@ const mapDispatchToProps = {}
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SendCode)
+)(SubmitCode)
