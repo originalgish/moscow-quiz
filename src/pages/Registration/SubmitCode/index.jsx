@@ -26,8 +26,8 @@ class SubmitCode extends Component {
           type="number"
           normalize={onlyFiveNumbers}
         />
-        <RenderButton type="submit" disabled={!valid || submitting} text="Отправить код" color="primary" />
 
+        <RenderButton type="submit" disabled={!valid || submitting} text="Отправить код" color="primary" />
         <div>
           <RenderButton type="submit" disabled={true} text="Выслать код" color="secondary" />
           <span>повторно через {`2:00`}</span>

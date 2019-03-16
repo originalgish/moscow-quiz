@@ -1,12 +1,17 @@
 import React from 'react'
 import { TextField } from '@material-ui/core'
 
-const RenderTextField = ({ input, label, meta: { touched, error, warning }, ...custom }) => (
+const RenderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
   <div className="render-textfield">
-    <TextField error={touched && error !== false} label={label} {...input} {...custom} />
-    {touched &&
-      ((error && <span className="render-textfield__error">{error}</span>) ||
-        (warning && <span className="render-textfield__warning">{warning}</span>))}
+    <TextField
+      error={touched && Boolean(error)}
+      helperText={touched ? error : null}
+      label={label}
+      variant="outlined"
+      margin="normal"
+      {...input}
+      {...custom}
+    />
   </div>
 )
 

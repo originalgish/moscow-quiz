@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 
 import RenderTextField from '../../components/RenderTextField'
+import RenderTextFieldPassword from '../../components/RenderTextFieldPassword'
 import RenderButton from '../../components/RenderButton'
 
 import submit from './utils/submit'
@@ -18,7 +19,7 @@ class Login extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <Field name="email" component={RenderTextField} label="E-mail" type="text" />
-        <Field name="password" component={RenderTextField} label="Пароль" type="password" />
+        <Field name="password" component={RenderTextFieldPassword} label="Пароль" />
         <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
       </form>
     )
@@ -26,7 +27,7 @@ class Login extends Component {
 }
 
 Login = reduxForm({
-  form: 'GetCode',
+  form: 'Login',
   onSubmit: submit,
   validate
 })(Login)

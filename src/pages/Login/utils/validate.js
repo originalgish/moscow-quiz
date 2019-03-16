@@ -7,6 +7,10 @@ const validate = values => {
     errors.email = 'Некорректный email'
   }
 
+  if (!values.password) {
+    errors.password = 'Обязательное поле'
+  }
+
   return errors
 }
 
