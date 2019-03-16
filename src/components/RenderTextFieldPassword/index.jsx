@@ -28,7 +28,7 @@ class RenderTextFieldPassword extends Component {
     const validationError = touched && Boolean(error)
     return (
       <div className="render-textfield">
-        <FormControl>
+        <FormControl fullWidth>
           <InputLabel variant="outlined" htmlFor="adornment-password" error={validationError}>
             {label}
           </InputLabel>
