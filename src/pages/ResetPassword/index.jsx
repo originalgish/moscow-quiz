@@ -4,7 +4,6 @@ import { reduxForm, Field } from 'redux-form'
 import { Link } from 'react-router-dom'
 
 import RenderTextField from '../../components/RenderTextField'
-import RenderTextFieldPassword from '../../components/RenderTextFieldPassword'
 import RenderButton from '../../components/RenderButton'
 
 import submit from './utils/submit'
@@ -12,29 +11,31 @@ import validate from './utils/validate'
 
 import './index.scss'
 
-class Login extends Component {
+class ResetPassword extends Component {
   state = {}
 
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
+        <h1>Пароль будет выслан на указанный email.</h1>
+
         <Field name="email" component={RenderTextField} label="E-mail" type="text" />
-        <Field name="password" component={RenderTextFieldPassword} label="Пароль" />
-        <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
+        <RenderButton type="submit" disabled={!valid || submitting} text="Напомнить пароль" color="primary" />
+
         <span>
-          Забыли пароль? <Link to="/reset_password">Напомнить.</Link>
+          <Link to="/login">Вернуться</Link> ко входу.
         </span>
       </form>
     )
   }
 }
 
-Login = reduxForm({
-  form: 'Login',
+ResetPassword = reduxForm({
+  form: 'ResetPassword',
   onSubmit: submit,
   validate
-})(Login)
+})(ResetPassword)
 
 const mapStateToProps = () => ({})
 
@@ -43,4 +44,4 @@ const mapDispatchToProps = {}
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(ResetPassword)

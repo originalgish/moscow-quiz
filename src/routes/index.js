@@ -6,6 +6,7 @@ import history from './history'
 import Home from '../pages/Home'
 import Registration from '../pages/Registration'
 import Login from '../pages/Login'
+import ResetPassword from '../pages/ResetPassword'
 
 class Routes extends Component {
   state = {}
@@ -17,6 +18,7 @@ class Routes extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/registration" component={Registration} />
           <Route path="/login" component={Login} />
+          <Route path="/reset_password" component={ResetPassword} />
         </Switch>
       </Router>
     )
