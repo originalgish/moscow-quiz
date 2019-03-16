@@ -66,3 +66,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+# Deploy
+```
+docker pull easygrow/bonanza-frontend:latest
+docker run --rm -d -p 80:80 -it --name front easygrow/bonanza-frontend:latest
+```
