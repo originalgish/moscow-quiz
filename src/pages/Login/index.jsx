@@ -18,7 +18,7 @@ class Login extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <div className="login-form-container">
+      <div className="fullscreen-center">
         <form onSubmit={handleSubmit} className="login-form">
           <h1>Войти</h1>
           <Field name="email" component={RenderTextField} label="E-mail" type="text" />

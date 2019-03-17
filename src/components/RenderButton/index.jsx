@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core'
 
 const styles = theme => ({
   button: {
-    marginTop: theme.spacing.unit * 2
+    // marginTop: theme.spacing.unit * 2
   }
 })
 

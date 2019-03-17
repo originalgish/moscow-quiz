@@ -17,16 +17,18 @@ class ResetPassword extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <h1>Пароль будет выслан на указанный email.</h1>
+      <div className="fullscreen-center">
+        <form onSubmit={handleSubmit} className="reset-password-form">
+          <h1>Пароль будет выслан на указанный email.</h1>
 
-        <Field name="email" component={RenderTextField} label="E-mail" type="text" />
-        <RenderButton type="submit" disabled={!valid || submitting} text="Напомнить пароль" color="primary" />
+          <Field name="email" component={RenderTextField} label="E-mail" type="text" />
+          <RenderButton type="submit" disabled={!valid || submitting} text="Напомнить пароль" color="primary" />
 
-        <span>
-          <Link to="/login">Вернуться</Link> ко входу.
-        </span>
-      </form>
+          <span>
+            <Link to="/login">Вернуться</Link> ко входу.
+          </span>
+        </form>
+      </div>
     )
   }
 }

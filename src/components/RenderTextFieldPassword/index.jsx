@@ -3,11 +3,7 @@ import { FormControl, InputLabel, OutlinedInput, InputAdornment, IconButton, For
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 import { withStyles } from '@material-ui/core/styles'
 
-const styles = theme => ({
-  margin: {
-    margin: theme.spacing.unit
-  }
-})
+import { styles } from './styles'
 
 class RenderTextFieldPassword extends Component {
   state = {
@@ -28,7 +24,7 @@ class RenderTextFieldPassword extends Component {
     const validationError = touched && Boolean(error)
     return (
       <div className="render-textfield">
-        <FormControl fullWidth>
+        <FormControl fullWidth className={classes.textfield}>
           <InputLabel variant="outlined" htmlFor="adornment-password" error={validationError}>
             {label}
           </InputLabel>
