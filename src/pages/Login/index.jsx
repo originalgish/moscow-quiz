@@ -18,14 +18,17 @@ class Login extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <Field name="email" component={RenderTextField} label="E-mail" type="text" />
-        <Field name="password" component={RenderTextFieldPassword} label="Пароль" />
-        <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
-        <span>
-          Забыли пароль? <Link to="/reset_password">Напомнить.</Link>
-        </span>
-      </form>
+      <div className="login-form-container">
+        <form onSubmit={handleSubmit} className="login-form">
+          <h1>Войти</h1>
+          <Field name="email" component={RenderTextField} label="E-mail" type="text" />
+          <Field name="password" component={RenderTextFieldPassword} label="Пароль" />
+          <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
+          <span>
+            Забыли пароль? <Link to="/reset_password">Напомнить</Link>
+          </span>
+        </form>
+      </div>
     )
   }
 }

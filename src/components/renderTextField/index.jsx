@@ -1,9 +1,10 @@
 import React from 'react'
 import { TextField } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 
-import './index.scss'
+import { styles } from './styles'
 
-const RenderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+const RenderTextField = ({ input, label, classes, meta: { touched, error }, ...custom }) => (
   <div className="render-textfield">
     <TextField
       error={touched && Boolean(error)}
@@ -12,10 +13,11 @@ const RenderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
       variant="outlined"
       margin="normal"
       fullWidth
+      className={classes.textfield}
       {...input}
       {...custom}
     />
   </div>
 )
 
-export default RenderTextField
+export default withStyles(styles)(RenderTextField)
