@@ -18,20 +18,23 @@ class RegisterUser extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <Field name="firstName" component={RenderTextField} label="Имя" type="text" />
-        <Field name="lastName" component={RenderTextField} label="Фамилия" type="text" />
-        <Field name="nickName" component={RenderTextField} label="Никнейм" type="text" />
-        <Field name="city" component={RenderTextField} label="Город" type="text" />
-        <Field name="email" component={RenderTextField} label="E-mail" type="email" />
-        <Field
-          name="policyAgreement"
-          component={RenderCheckbox}
-          label="Я даю согласие на обработку персональных данных, 
+      <div className="fullscreen-center">
+        <form onSubmit={handleSubmit} className="register-user-form">
+          <h1>Введите данные для регистрации</h1>
+          <Field name="firstName" component={RenderTextField} label="Имя" type="text" />
+          <Field name="lastName" component={RenderTextField} label="Фамилия" type="text" />
+          <Field name="nickName" component={RenderTextField} label="Никнейм" type="text" />
+          <Field name="city" component={RenderTextField} label="Город" type="text" />
+          <Field name="email" component={RenderTextField} label="E-mail" type="email" />
+          <Field
+            name="policyAgreement"
+            component={RenderCheckbox}
+            label="Я даю согласие на обработку персональных данных, 
               согласно политике конфиденциальности."
-        />
-        <RenderButton type="submit" disabled={!valid || submitting} text="Получить пароль" color="primary" />
-      </form>
+          />
+          <RenderButton type="submit" disabled={!valid || submitting} text="Получить пароль" color="primary" />
+        </form>
+      </div>
     )
   }
 }

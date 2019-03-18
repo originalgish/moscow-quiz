@@ -18,21 +18,24 @@ class SubmitCode extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <form onSubmit={handleSubmit}>
-        <Field
-          name="confirmationCode"
-          component={RenderTextField}
-          label="Код подтверждения"
-          type="number"
-          normalize={onlyFiveNumbers}
-        />
+      <div className="fullscreen-center">
+        <form onSubmit={handleSubmit} className="submit-code-form">
+          <h1>Введите 5значный код</h1>
+          <Field
+            name="confirmationCode"
+            component={RenderTextField}
+            label="Код подтверждения"
+            type="number"
+            normalize={onlyFiveNumbers}
+          />
+          <RenderButton type="submit" disabled={!valid || submitting} text="Отправить код" color="primary" />
 
-        <RenderButton type="submit" disabled={!valid || submitting} text="Отправить код" color="primary" />
-        <div>
-          <RenderButton type="submit" disabled={true} text="Выслать код" color="secondary" />
-          <span>повторно через {`2:00`}</span>
-        </div>
-      </form>
+          {/* <div>
+            <RenderButton type="submit" disabled={true} text="Выслать код" color="secondary" />
+            <span>повторно через {`2:00`}</span>
+          </div> */}
+        </form>
+      </div>
     )
   }
 }
