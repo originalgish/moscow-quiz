@@ -19,9 +19,3 @@ body {
   justify-content: center;
 }
 
-@media screen and (max-height: 700px) {
-  .fullscreen-center {
-    align-items: flex-start;
-    overflow-y: auto;
-  }
-}

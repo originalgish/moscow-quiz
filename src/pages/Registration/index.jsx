@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 // import GetCode from './GetCode'
-// import SubmitCode from './SubmitCode'
+import SubmitCode from './SubmitCode'
 import RegisterUser from './RegisterUser'
 
 import './index.scss'
@@ -13,8 +13,8 @@ class Registration extends Component {
     return (
       <div className="registration">
         {/* <GetCode /> */}
-        {/* <SubmitCode /> */}
-        <RegisterUser />
+        <SubmitCode />
+        {/* <RegisterUser /> */}
       </div>
     )
   }
