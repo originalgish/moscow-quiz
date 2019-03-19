@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // import GetCode from './GetCode'
 import SubmitCode from './SubmitCode'
-import RegisterUser from './RegisterUser'
+// import RegisterUser from './RegisterUser'
 
 import './index.scss'
 
