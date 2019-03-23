@@ -17,7 +17,7 @@ class Registration extends Component {
     return (
       <div className="registration">
         {confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
-        {!userRegistrationStage && <RegisterUser />}
+        {userRegistrationStage && <RegisterUser />}
       </div>
     )
   }

@@ -17,7 +17,15 @@ const mapStateKeys = state => {
   delete mappedKeys.policyAgreement
   delete mappedKeys.confirmPassword
   mappedKeys.ip_address = address()
-  return mappedKeys
+  return normalizeValues(mappedKeys)
+}
+
+const normalizeValues = state => {
+  const normalizedValues = {
+    ...state,
+    phone: state.phone.replace(/\D/g, '')
+  }
+  return normalizedValues
 }
 
 const getCode = state => async dispatch => {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, initialize } from 'redux-form'
+import { get } from 'lodash'
 
 import RenderTextField from '../../../components/RenderTextField'
 import RenderCheckbox from '../../../components/RenderCheckbox'
@@ -15,6 +16,16 @@ import './index.scss'
 
 class RegisterUser extends Component {
   state = {}
+
+  componentDidMount() {
+    const { confirmedData } = this.props
+    if (confirmedData) {
+      this.props.initialize({
+        ...initialValues,
+        ...confirmedData
+      })
+    }
+  }
 
   render() {
     const { handleSubmit, valid, submitting } = this.props
@@ -55,9 +66,13 @@ RegisterUser = reduxForm({
   destroyOnUnmount: false
 })(RegisterUser)
 
-const mapStateToProps = () => ({})
+const mapStateToProps = state => ({
+  confirmedData: get(state.form, 'ConfirmPhone.values')
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  initialize
+}
 
 export default connect(
   mapStateToProps,

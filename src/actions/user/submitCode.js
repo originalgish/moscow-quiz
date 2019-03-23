@@ -2,9 +2,17 @@ import { CHANGE_REGISTRATION_STAGE, SUBMIT_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 
+const normalizeValues = state => {
+  const normalizedValues = {
+    ...state,
+    phone: state.phone.replace(/\D/g, '')
+  }
+  return normalizedValues
+}
+
 const submitCode = state => async dispatch => {
-  const url = `${URLs.mock401}`
-  const request = await POST(url, state)
+  const url = `${URLs.mock200}`
+  const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
     status: request.status

@@ -87,7 +87,8 @@ class ConfirmPhone extends Component {
 ConfirmPhone = reduxForm({
   form: 'ConfirmPhone',
   onSubmit: submit,
-  validate
+  validate,
+  destroyOnUnmount: false
 })(ConfirmPhone)
 
 const mapStateToProps = state => ({
