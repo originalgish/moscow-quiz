@@ -17,6 +17,7 @@ const mapStateKeys = state => {
   delete mappedKeys.policyAgreement
   delete mappedKeys.confirmPassword
   mappedKeys.ip_address = address()
+  mappedKeys['_id'] = 2
   return normalizeValues(mappedKeys)
 }
 
@@ -29,7 +30,8 @@ const normalizeValues = state => {
 }
 
 const getCode = state => async dispatch => {
-  const url = `${URLs.mock200}`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/register`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),

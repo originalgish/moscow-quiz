@@ -1,6 +1,17 @@
+import { mapKeys } from 'lodash'
+
 import { CHANGE_REGISTRATION_STAGE, SUBMIT_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
+
+const KEYS_MAPPING = {
+  confirmationCode: 'code'
+}
+
+const mapStateKeys = state => {
+  const mappedKeys = mapKeys(state, (value, key) => (KEYS_MAPPING[key] ? KEYS_MAPPING[key] : key))
+  return normalizeValues(mappedKeys)
+}
 
 const normalizeValues = state => {
   const normalizedValues = {
@@ -11,8 +22,9 @@ const normalizeValues = state => {
 }
 
 const submitCode = state => async dispatch => {
-  const url = `${URLs.mock200}`
-  const request = await POST(url, normalizeValues(state))
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/authenticate_phone`
+  const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),
     status: request.status

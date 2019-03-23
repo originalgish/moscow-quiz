@@ -1,6 +1,7 @@
 {
   "name": "moscow-quiz",
   "version": "1.0.0",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.9.2",

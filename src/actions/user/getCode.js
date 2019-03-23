@@ -11,7 +11,8 @@ const normalizeValues = state => {
 }
 
 const getCode = state => async dispatch => {
-  const url = `${URLs.mock200}`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/initialize_phone`
   const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
