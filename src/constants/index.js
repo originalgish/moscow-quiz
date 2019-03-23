@@ -1,6 +1,5 @@
 //user
-export const LOG_IN = 'LOG_IN'
-export const LOG_OUT = 'LOG_OUT'
-export const LOG_IN_ERROR = 'LOG_IN_ERROR'
+export const GET_CODE_ERROR = 'GET_CODE_ERROR'
+export const CHANGE_REGISTRATION_STAGE = 'CHANGE_REGISTRATION_STAGE'
 
-//game
+//quiz

@@ -7,8 +7,9 @@ const phoneMask = createTextMask({
       regExp: /[0-9]/
     }
   },
-  guide: true,
-  allowEmpty: true
+  guide: false,
+  allowEmpty: false,
+  stripMask: false
 })
 
 export { phoneMask }

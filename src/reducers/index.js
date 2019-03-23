@@ -2,12 +2,12 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 
 import user from './user'
-import game from './game'
+import quiz from './quiz'
 
 const rootReducer = combineReducers({
   form: formReducer,
   user,
-  game
+  quiz
 })
 
 export default rootReducer

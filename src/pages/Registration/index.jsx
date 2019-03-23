@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-// import GetCode from './GetCode'
-import SubmitCode from './SubmitCode'
+import ConfirmPhone from './ConfirmPhone'
 import RegisterUser from './RegisterUser'
 
 import './index.scss'
@@ -10,17 +9,23 @@ import './index.scss'
 class Registration extends Component {
   state = {}
   render() {
+    const { registrationStage } = this.props
+    const confirmationStage = registrationStage === 'getCode' || registrationStage === 'submitCode'
+    const userRegistrationStage = registrationStage === 'registerUser'
+    const getCodeStage = registrationStage === 'getCode'
+    const submitCodeStage = registrationStage === 'submitCode'
     return (
       <div className="registration">
-        {/* <GetCode /> */}
-        {/* <SubmitCode /> */}
-        <RegisterUser />
+        {confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
+        {userRegistrationStage && <RegisterUser />}
       </div>
     )
   }
 }
 
-const mapStateToProps = () => ({})
+const mapStateToProps = state => ({
+  registrationStage: state.user.registrationStage
+})
 
 const mapDispatchToProps = {}
 

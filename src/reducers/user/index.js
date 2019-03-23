@@ -1,27 +1,21 @@
-import { LOG_IN, LOG_OUT, LOG_IN_ERROR } from '../../constants'
+import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
 
 const initialState = {
-  isAuthenticated: false,
-  loginError: false
+  registrationStage: 'getCode',
+  getCodeError: ''
 }
 
 const user = (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOG_IN:
+    case CHANGE_REGISTRATION_STAGE:
       return {
         ...state,
-        isAuthenticated: true
+        registrationStage: payload
       }
-    case LOG_OUT:
+    case GET_CODE_ERROR:
       return {
         ...state,
-        isAuthenticated: false
-      }
-
-    case LOG_IN_ERROR:
-      return {
-        ...state,
-        loginError: payload
+        getCodeError: payload
       }
 
     default:

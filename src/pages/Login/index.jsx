@@ -22,7 +22,7 @@ class Login extends Component {
         <form onSubmit={handleSubmit} className="login-form">
           <h1>Войти</h1>
           <Field name="email" component={RenderTextField} label="E-mail" type="text" />
-          <Field name="password" component={RenderTextFieldPassword} label="Пароль" />
+          <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
           <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
           <span>
             Забыли пароль? <Link to="/reset_password">Напомнить</Link>
