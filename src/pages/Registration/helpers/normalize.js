@@ -5,10 +5,10 @@ const onlyFiveNumbers = value => {
 
   const onlyNums = value.replace(/\D/g, '')
 
-  if (onlyNums.length <= 5) {
+  if (onlyNums.length <= 4) {
     return onlyNums
   } else {
-    return `${onlyNums.slice(0, 5)}`
+    return `${onlyNums.slice(0, 4)}`
   }
 }
 

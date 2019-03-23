@@ -9,8 +9,8 @@ const validate = values => {
 
   if (!values.confirmationCode) {
     errors.confirmationCode = 'Обязательное поле'
-  } else if (values.confirmationCode.length !== 5) {
-    errors.confirmationCode = 'Введите 5 цифр'
+  } else if (values.confirmationCode.length !== 4) {
+    errors.confirmationCode = 'Введите 4 цифры'
   }
 
   return errors

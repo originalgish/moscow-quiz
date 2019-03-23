@@ -1,9 +1,9 @@
-import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
+import { CHANGE_REGISTRATION_STAGE, SUBMIT_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 
 const submitCode = state => async dispatch => {
-  const url = `${URLs.mock}`
+  const url = `${URLs.mock401}`
   const request = await POST(url, state)
   const response = {
     data: await request.json(),
@@ -17,7 +17,7 @@ const submitCode = state => async dispatch => {
     })
   } else {
     dispatch({
-      type: GET_CODE_ERROR,
+      type: SUBMIT_CODE_ERROR,
       payload: 'Код не тот'
     })
   }

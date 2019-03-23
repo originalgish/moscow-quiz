@@ -1,8 +1,7 @@
-import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
+import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR, SUBMIT_CODE_ERROR } from '../../constants'
 
 const initialState = {
-  registrationStage: 'getCode',
-  getCodeError: ''
+  registrationStage: 'getCode'
 }
 
 const user = (state = initialState, { type, payload }) => {
@@ -16,6 +15,11 @@ const user = (state = initialState, { type, payload }) => {
       return {
         ...state,
         getCodeError: payload
+      }
+    case SUBMIT_CODE_ERROR:
+      return {
+        ...state,
+        submitCodeError: payload
       }
 
     default:

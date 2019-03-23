@@ -3,7 +3,7 @@ import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 
 const getCode = state => async dispatch => {
-  const url = `${URLs.mock}`
+  const url = `${URLs.mock200}`
   const request = await POST(url, state)
   const response = {
     data: await request.json(),
