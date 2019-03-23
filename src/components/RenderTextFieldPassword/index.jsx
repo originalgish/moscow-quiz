@@ -18,6 +18,7 @@ class RenderTextFieldPassword extends Component {
     const {
       input,
       label,
+      labelWidth,
       classes,
       meta: { active, dirty, touched, error }
     } = this.props
@@ -29,9 +30,9 @@ class RenderTextFieldPassword extends Component {
             {label}
           </InputLabel>
           <OutlinedInput
-            labelWidth={active || dirty ? 58 : 0}
+            labelWidth={active || dirty ? labelWidth : 0}
             error={validationError}
-            id="adornment-password"
+            id={label}
             type={this.state.showPassword ? 'text' : 'password'}
             endAdornment={
               <InputAdornment position="end">

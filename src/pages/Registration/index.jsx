@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import GetCode from './GetCode'
-// import SubmitCode from './SubmitCode'
-// import RegisterUser from './RegisterUser'
+// import GetCode from './GetCode'
+import SubmitCode from './SubmitCode'
+import RegisterUser from './RegisterUser'
 
 import './index.scss'
 
@@ -12,9 +12,9 @@ class Registration extends Component {
   render() {
     return (
       <div className="registration">
-        <GetCode />
+        {/* <GetCode /> */}
         {/* <SubmitCode /> */}
-        {/* <RegisterUser /> */}
+        <RegisterUser />
       </div>
     )
   }

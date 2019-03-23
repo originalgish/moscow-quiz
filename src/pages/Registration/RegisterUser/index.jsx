@@ -5,6 +5,7 @@ import { reduxForm, Field } from 'redux-form'
 import RenderTextField from '../../../components/RenderTextField'
 import RenderCheckbox from '../../../components/RenderCheckbox'
 import RenderButton from '../../../components/RenderButton'
+import RenderTextFieldPassword from '../../../components/RenderTextFieldPassword'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
@@ -26,6 +27,13 @@ class RegisterUser extends Component {
           <Field name="nickName" component={RenderTextField} label="Никнейм" type="text" />
           <Field name="city" component={RenderTextField} label="Город" type="text" />
           <Field name="email" component={RenderTextField} label="E-mail" type="email" />
+          <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
+          <Field
+            name="confirmPassword"
+            component={RenderTextFieldPassword}
+            label="Подтвердите пароль"
+            labelWidth={158}
+          />
           <Field
             name="policyAgreement"
             component={RenderCheckbox}

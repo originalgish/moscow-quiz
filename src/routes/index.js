@@ -7,6 +7,7 @@ import Home from '../pages/Home'
 import Registration from '../pages/Registration'
 import Login from '../pages/Login'
 import ResetPassword from '../pages/ResetPassword'
+import Quiz from '../pages/Quiz'
 
 class Routes extends Component {
   state = {}
@@ -19,6 +20,7 @@ class Routes extends Component {
           <Route path="/registration" component={Registration} />
           <Route path="/login" component={Login} />
           <Route path="/reset_password" component={ResetPassword} />
+          <Route path="/reset_password" component={Quiz} />
         </Switch>
       </Router>
     )
