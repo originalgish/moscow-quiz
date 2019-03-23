@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "ip": "^1.1.5",
+    "lodash": "^4.17.11",
     "luxon": "^1.12.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.4",

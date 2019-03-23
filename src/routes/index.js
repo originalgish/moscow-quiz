@@ -20,7 +20,7 @@ class Routes extends Component {
           <Route path="/registration" component={Registration} />
           <Route path="/login" component={Login} />
           <Route path="/reset_password" component={ResetPassword} />
-          <Route path="/reset_password" component={Quiz} />
+          <Route path="/quiz" component={Quiz} />
         </Switch>
       </Router>
     )
