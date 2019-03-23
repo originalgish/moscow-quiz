@@ -40,7 +40,7 @@ class RegisterUser extends Component {
             label="Я даю согласие на обработку персональных данных, 
               согласно политике конфиденциальности."
           />
-          <RenderButton type="submit" disabled={!valid || submitting} text="Получить пароль" color="primary" />
+          <RenderButton type="submit" disabled={!valid || submitting} text="Зарегистрироваться" color="primary" />
         </form>
       </div>
     )
@@ -51,7 +51,8 @@ RegisterUser = reduxForm({
   form: 'RegisterUser',
   onSubmit: submit,
   validate,
-  initialValues
+  initialValues,
+  destroyOnUnmount: false
 })(RegisterUser)
 
 const mapStateToProps = () => ({})

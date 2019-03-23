@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, initialize } from 'redux-form'
 import { Link } from 'react-router-dom'
+import { get } from 'lodash'
 
 import RenderTextField from '../../components/RenderTextField'
 import RenderTextFieldPassword from '../../components/RenderTextFieldPassword'
@@ -14,6 +15,13 @@ import './index.scss'
 
 class Login extends Component {
   state = {}
+
+  componentDidMount() {
+    const { registrationEmail } = this.props
+    if (registrationEmail) {
+      this.props.initialize({ email: registrationEmail })
+    }
+  }
 
   render() {
     const { handleSubmit, valid, submitting } = this.props
@@ -39,9 +47,13 @@ Login = reduxForm({
   validate
 })(Login)
 
-const mapStateToProps = () => ({})
+const mapStateToProps = state => ({
+  registrationEmail: get(state.form, 'RegisterUser.values.email')
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  initialize
+}
 
 export default connect(
   mapStateToProps,
