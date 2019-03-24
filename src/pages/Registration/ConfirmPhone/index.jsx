@@ -35,8 +35,12 @@ class ConfirmPhone extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   startTimer = () => {
-    if (this.props.submitCodeStage) {
+    if (this.props.submitCodeStage && this.state.getCodeTime === 0) {
       this.setState({ getCodeTime: this.WAIT_TIME })
       this.timer = setInterval(() => {
         this.setState({ getCodeTime: this.state.getCodeTime - 1 })
@@ -104,11 +108,7 @@ ConfirmPhone = reduxForm({
   form: 'ConfirmPhone',
   onSubmit: submit,
   validate,
-  destroyOnUnmount: false,
-  initialValues: {
-    phone: '+7 (916) 564-74-02',
-    confirmationCode: 5576
-  }
+  destroyOnUnmount: false
 })(ConfirmPhone)
 
 const mapStateToProps = state => ({

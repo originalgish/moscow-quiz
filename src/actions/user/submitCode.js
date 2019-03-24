@@ -16,7 +16,8 @@ const mapStateKeys = state => {
 const normalizeValues = state => {
   const normalizedValues = {
     ...state,
-    phone: state.phone.replace(/\D/g, '')
+    phone: state.phone.replace(/\D/g, ''),
+    code: Number(state.code)
   }
   return normalizedValues
 }
@@ -27,8 +28,8 @@ const submitCode = state => async dispatch => {
     payload: ''
   })
 
-  const url = `${URLs.mock400}`
-  // const url = `${URLs.production}/api/v1/authenticate_phone`
+  // const url = `${URLs.mock400}`
+  const url = `${URLs.production}/api/v1/authenticate_phone`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),
@@ -41,10 +42,15 @@ const submitCode = state => async dispatch => {
       payload: 'registerUser'
     })
   } else {
-    if (status === 400) {
+    if (status === 401) {
       dispatch({
         type: SUBMIT_CODE_ERROR,
         payload: 'Неправильно введен код'
+      })
+    } else if (status === 409) {
+      dispatch({
+        type: SUBMIT_CODE_ERROR,
+        payload: 'Произошла ошибка, попробуйте через минуту'
       })
     } else {
       dispatch({

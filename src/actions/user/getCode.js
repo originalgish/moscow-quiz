@@ -16,8 +16,8 @@ const getCode = state => async dispatch => {
     payload: ''
   })
 
-  const url = `${URLs.mock200}`
-  // const url = `${URLs.production}/api/v1/initialize_phone`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/initialize_phone`
   const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
@@ -34,6 +34,11 @@ const getCode = state => async dispatch => {
       dispatch({
         type: GET_CODE_ERROR,
         payload: 'Номер уже зарегистрирован'
+      })
+    } else if (status === 407) {
+      dispatch({
+        type: GET_CODE_ERROR,
+        payload: 'Сообщение на указанный номер не может быть доставлено'
       })
     } else {
       dispatch({
