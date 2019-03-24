@@ -22,8 +22,13 @@ const normalizeValues = state => {
 }
 
 const submitCode = state => async dispatch => {
-  // const url = `${URLs.mock200}`
-  const url = `${URLs.production}/api/v1/authenticate_phone`
+  dispatch({
+    type: SUBMIT_CODE_ERROR,
+    payload: ''
+  })
+
+  const url = `${URLs.mock400}`
+  // const url = `${URLs.production}/api/v1/authenticate_phone`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),
@@ -36,10 +41,17 @@ const submitCode = state => async dispatch => {
       payload: 'registerUser'
     })
   } else {
-    dispatch({
-      type: SUBMIT_CODE_ERROR,
-      payload: 'Код не тот'
-    })
+    if (status === 400) {
+      dispatch({
+        type: SUBMIT_CODE_ERROR,
+        payload: 'Неправильно введен код'
+      })
+    } else {
+      dispatch({
+        type: SUBMIT_CODE_ERROR,
+        payload: 'Произошла ошибка, попробуйте снова'
+      })
+    }
   }
 
   console.log(data, status)

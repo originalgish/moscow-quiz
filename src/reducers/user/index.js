@@ -1,7 +1,9 @@
 import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR, SUBMIT_CODE_ERROR } from '../../constants'
 
 const initialState = {
-  registrationStage: 'getCode'
+  registrationStage: 'getCode',
+  getCodeError: '',
+  submitCodeError: ''
 }
 
 const user = (state = initialState, { type, payload }) => {

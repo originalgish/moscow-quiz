@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, getFormValues } from 'redux-form'
 import { Duration } from 'luxon'
 
 import { getCode } from '../../../actions/user'
@@ -8,6 +8,7 @@ import { getCode } from '../../../actions/user'
 import RenderTextField from '../../../components/RenderTextField'
 import RenderButton from '../../../components/RenderButton'
 import RenderTooltip from '../../../components/RenderTooltip'
+import RenderSnackbar from '../../../components/RenderSnackbar'
 import TooltipTitle from './components/TooltipTitle'
 
 import { phoneMask } from '../helpers/inputMask'
@@ -34,18 +35,23 @@ class ConfirmPhone extends Component {
     }
   }
 
+  startTimer = () => {
+    if (this.props.submitCodeStage) {
+      this.setState({ getCodeTime: this.WAIT_TIME })
+      this.timer = setInterval(() => {
+        this.setState({ getCodeTime: this.state.getCodeTime - 1 })
+      }, 1000)
+    }
+  }
+
   getCodeAgain = () => {
-    this.props.getCode()
-    this.setState({ getCodeTime: this.WAIT_TIME })
-    this.timer = setInterval(() => {
-      this.setState({ getCodeTime: this.state.getCodeTime - 1 })
-    }, 1000)
+    this.props.getCode(this.props.formValues)
   }
 
   getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('mm:ss')
 
   render() {
-    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, submitCodeError } = this.props
+    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getCodeError, submitCodeError } = this.props
     const { getCodeTime } = this.state
     return (
       <div className="fullscreen-center">
@@ -55,9 +61,15 @@ class ConfirmPhone extends Component {
           <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
 
           {submitCodeError && (
-            <button onClick={this.getCodeAgain}>{`Получить код повторно ${
-              getCodeTime !== 0 ? `через ${this.getFormattedSeconds(getCodeTime)}` : ``
-            }`}</button>
+            <RenderButton
+              type="button"
+              disabled={getCodeTime !== 0}
+              text={`Получить код повторно ${
+                getCodeTime !== 0 ? `через ${this.getFormattedSeconds(getCodeTime)}` : ``
+              }`}
+              color="secondary"
+              onClick={this.getCodeAgain}
+            />
           )}
 
           {submitCodeStage && (
@@ -77,7 +89,11 @@ class ConfirmPhone extends Component {
             disabled={!valid || submitting}
             text={getCodeStage ? 'Получить код' : 'Отправить код'}
             color="primary"
+            onClick={this.startTimer}
           />
+
+          {getCodeError && <RenderSnackbar variant="error" message={getCodeError} />}
+          {submitCodeError && <RenderSnackbar variant="error" message={submitCodeError} />}
         </form>
       </div>
     )
@@ -88,14 +104,22 @@ ConfirmPhone = reduxForm({
   form: 'ConfirmPhone',
   onSubmit: submit,
   validate,
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
+  initialValues: {
+    phone: '+7 (916) 564-74-02',
+    confirmationCode: 5576
+  }
 })(ConfirmPhone)
 
 const mapStateToProps = state => ({
-  submitCodeError: state.user.submitCodeError
+  getCodeError: state.user.getCodeError,
+  submitCodeError: state.user.submitCodeError,
+  formValues: getFormValues('ConfirmPhone')(state)
 })
 
-const mapDispatchToProps = { getCode }
+const mapDispatchToProps = {
+  getCode
+}
 
 export default connect(
   mapStateToProps,

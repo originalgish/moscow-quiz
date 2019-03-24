@@ -11,8 +11,13 @@ const normalizeValues = state => {
 }
 
 const getCode = state => async dispatch => {
-  // const url = `${URLs.mock200}`
-  const url = `${URLs.production}/api/v1/initialize_phone`
+  dispatch({
+    type: GET_CODE_ERROR,
+    payload: ''
+  })
+
+  const url = `${URLs.mock200}`
+  // const url = `${URLs.production}/api/v1/initialize_phone`
   const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
@@ -28,7 +33,12 @@ const getCode = state => async dispatch => {
     if (status === 409) {
       dispatch({
         type: GET_CODE_ERROR,
-        payload: 'Номер уже есть'
+        payload: 'Номер уже зарегистрирован'
+      })
+    } else {
+      dispatch({
+        type: GET_CODE_ERROR,
+        payload: 'Произошла ошибка, попробуйте снова'
       })
     }
   }
