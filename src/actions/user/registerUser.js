@@ -1,4 +1,3 @@
-import { address } from 'ip'
 import { mapKeys } from 'lodash'
 
 import history from '../../routes/history'
@@ -16,7 +15,6 @@ const mapStateKeys = state => {
   const mappedKeys = mapKeys(state, (value, key) => (KEYS_MAPPING[key] ? KEYS_MAPPING[key] : key))
   delete mappedKeys.policyAgreement
   delete mappedKeys.confirmPassword
-  mappedKeys.ip_address = address()
   mappedKeys['_id'] = 2
   return normalizeValues(mappedKeys)
 }
