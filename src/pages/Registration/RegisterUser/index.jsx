@@ -12,7 +12,8 @@ import submit from './utils/submit'
 import validate from './utils/validate'
 import initialValues from './utils/initialValues'
 
-import './index.scss'
+import { FullScreenCenter } from '../../../styles/app/app'
+import { RegisterUserForm, Title } from './styles'
 
 class RegisterUser extends Component {
   state = {}
@@ -30,9 +31,9 @@ class RegisterUser extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <div className="fullscreen-center">
-        <form onSubmit={handleSubmit} className="register-user-form">
-          <h1>Введите данные для регистрации</h1>
+      <FullScreenCenter>
+        <RegisterUserForm onSubmit={handleSubmit}>
+          <Title>Введите данные для регистрации</Title>
           <Field name="firstName" component={RenderTextField} label="Имя" type="text" />
           <Field name="lastName" component={RenderTextField} label="Фамилия" type="text" />
           <Field name="nickName" component={RenderTextField} label="Никнейм" type="text" />
@@ -52,8 +53,8 @@ class RegisterUser extends Component {
               согласно политике конфиденциальности."
           />
           <RenderButton type="submit" disabled={!valid || submitting} text="Зарегистрироваться" color="primary" />
-        </form>
-      </div>
+        </RegisterUserForm>
+      </FullScreenCenter>
     )
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react'
 
-const SVGElements = props => (
-  <svg width="837px" height="756px" viewBox="0 0 837 756" version="1.1" xmlns="http://www.w3.org/2000/svg" {...props}>
+import { SVGContainer } from '../styles'
+
+const SVGElements = () => (
+  <SVGContainer width="837px" height="756px" viewBox="0 0 837 756" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g id="Group">
         <circle id="Oval-0" fill="none" cx="429" cy="721" r="5" />
@@ -19,7 +21,7 @@ const SVGElements = props => (
         <circle id="Oval-12" fill="none" cx="422" cy="293" r="5" />
       </g>
     </g>
-  </svg>
+  </SVGContainer>
 )
 
 export default SVGElements

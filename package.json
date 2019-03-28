@@ -6,7 +6,6 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "ip": "^1.1.5",
     "lodash": "^4.17.11",
     "luxon": "^1.12.0",
     "node-sass": "^4.11.0",
@@ -17,10 +16,10 @@
     "react-router-dom": "^4.4.0",
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.1.0",
     "redux-form-input-masks": "^2.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "eslint-config-airbnb": "^17.1.0",
@@ -29,7 +28,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",

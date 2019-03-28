@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import './index.scss'
+import { HomeWrapper } from './styles'
 
 class Home extends Component {
   state = {}
   render() {
-    return <div className="home">home</div>
+    return <HomeWrapper>home</HomeWrapper>
   }
 }
 

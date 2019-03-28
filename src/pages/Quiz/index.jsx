@@ -2,21 +2,16 @@ import React, { Component } from 'react'
 
 import Museum from './Museum'
 
-import './index.scss'
+import { FullScreenCenter } from '../../styles/app/app'
 
 class Quiz extends Component {
   state = {}
 
-  handleAreaClick = e => {
-    e.preventDefault()
-    console.log('area')
-  }
-
   render() {
     return (
-      <div className="quiz">
+      <FullScreenCenter>
         <Museum />
-      </div>
+      </FullScreenCenter>
     )
   }
 }

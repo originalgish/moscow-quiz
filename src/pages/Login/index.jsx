@@ -11,7 +11,8 @@ import RenderButton from '../../components/RenderButton'
 import submit from './utils/submit'
 import validate from './utils/validate'
 
-import './index.scss'
+import { FullScreenCenter } from '../../styles/app/app'
+import { LoginForm, Title, ForgotPassword } from './styles'
 
 class Login extends Component {
   state = {}
@@ -26,17 +27,19 @@ class Login extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <div className="fullscreen-center">
-        <form onSubmit={handleSubmit} className="login-form">
-          <h1>Войти</h1>
+      <FullScreenCenter>
+        <LoginForm onSubmit={handleSubmit} className="login-form">
+          <Title>Войти</Title>
+
           <Field name="email" component={RenderTextField} label="E-mail" type="text" />
           <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
           <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
-          <span>
+
+          <ForgotPassword>
             Забыли пароль? <Link to="/reset_password">Напомнить</Link>
-          </span>
-        </form>
-      </div>
+          </ForgotPassword>
+        </LoginForm>
+      </FullScreenCenter>
     )
   }
 }

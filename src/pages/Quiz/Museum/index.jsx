@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import SVGElements from './SVGElements'
 
 import museum from './img/museum.png'
-import './index.scss'
+import { MuseumImage, MuseumContainer, QuestionContainer, QuestionMarkButton } from './styles'
 
 class Museum extends Component {
   state = {
@@ -42,24 +42,17 @@ class Museum extends Component {
   render() {
     const { points } = this.state
     return (
-      <div className="museum">
+      <MuseumContainer>
         <SVGElements className="museum__points" />
 
-        <div className="museum__questions">
+        <QuestionContainer>
           {points.map(point => (
-            <button
-              key={point.id}
-              className="museum__questions__question"
-              style={{
-                top: `${point.top}px`,
-                left: `${point.left}px`
-              }}
-            />
+            <QuestionMarkButton key={point.id} top={point.top} left={point.left} />
           ))}
-        </div>
+        </QuestionContainer>
 
-        <img src={museum} alt="museum" className="museum__image" />
-      </div>
+        <MuseumImage src={museum} alt="museum" />
+      </MuseumContainer>
     )
   }
 }

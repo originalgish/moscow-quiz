@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import Routes from './routes'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 
-import './styles/app/app.scss'
+import { AppStyles } from './styles/app/app'
 import theme from './styles/theme'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <MuiThemeProvider theme={theme}>
-          <Routes />
-        </MuiThemeProvider>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <AppStyles />
+        <Routes />
+      </MuiThemeProvider>
     )
   }
 }

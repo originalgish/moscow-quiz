@@ -17,7 +17,8 @@ import { onlyFiveNumbers } from '../helpers/normalize'
 import submit from './utils/submit'
 import validate from './utils/validate'
 
-import './index.scss'
+import { FullScreenCenter } from '../../../styles/app/app'
+import { ConfirmPhoneForm, Title } from './styles'
 
 class ConfirmPhone extends Component {
   constructor(props) {
@@ -58,9 +59,9 @@ class ConfirmPhone extends Component {
     const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getCodeError, submitCodeError } = this.props
     const { getCodeTime } = this.state
     return (
-      <div className="fullscreen-center">
-        <form onSubmit={handleSubmit} className="confirm-phone-form">
-          <h1>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</h1>
+      <FullScreenCenter>
+        <ConfirmPhoneForm onSubmit={handleSubmit}>
+          <Title>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</Title>
 
           <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
 
@@ -98,8 +99,8 @@ class ConfirmPhone extends Component {
 
           {getCodeError && <RenderSnackbar variant="error" message={getCodeError} />}
           {submitCodeError && <RenderSnackbar variant="error" message={submitCodeError} />}
-        </form>
-      </div>
+        </ConfirmPhoneForm>
+      </FullScreenCenter>
     )
   }
 }
