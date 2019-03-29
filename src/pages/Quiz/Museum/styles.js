@@ -1,18 +1,11 @@
 import styled from 'styled-components'
 
 import questionMark from './img/question-mark.svg'
-import museum from './img/museum.png'
 
 export const MuseumContainer = styled.div`
   position: relative;
   width: 70%;
   height: 70%;
-
-  /* background-image: url(${museum});
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat; */
-  /* background-color: #ff000050; */
 `
 export const MuseumImage = styled.img`
   position: absolute;

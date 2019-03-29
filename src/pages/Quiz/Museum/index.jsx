@@ -28,12 +28,14 @@ class Museum extends Component {
   }
 
   getPointsCoordinates = svgCircles => {
+    const parentBounds = document.getElementById('museum').getBoundingClientRect()
     const points = svgCircles.map(point => {
       const bounds = point.getBoundingClientRect()
+
       return {
         id: Number(point.id.replace(/\D/g, '')),
-        top: bounds.top + bounds.height / 2,
-        left: bounds.left + bounds.width / 2
+        top: bounds.top - parentBounds.top + bounds.height / 2,
+        left: bounds.left - parentBounds.left + bounds.width / 2
       }
     })
     this.setState({ points })
@@ -42,8 +44,8 @@ class Museum extends Component {
   render() {
     const { points } = this.state
     return (
-      <MuseumContainer>
-        <SVGElements className="museum__points" />
+      <MuseumContainer id="museum">
+        <SVGElements />
 
         <QuestionContainer>
           {points.map(point => (
