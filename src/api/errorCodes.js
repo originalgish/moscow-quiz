@@ -34,4 +34,11 @@ const registerUserCodeErrors = code => {
   }
 }
 
-export { getCodeErrors, submitCodeErrors, registerUserCodeErrors }
+const loginErrors = code => {
+  switch (code) {
+    default:
+      return 'Произошла ошибка, попробуйте снова'
+  }
+}
+
+export { getCodeErrors, submitCodeErrors, registerUserCodeErrors, loginErrors }

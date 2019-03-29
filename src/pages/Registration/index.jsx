@@ -17,8 +17,8 @@ class Registration extends Component {
 
     return (
       <RegistrationWrapper>
-        {!confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
-        {!userRegistrationStage && <RegisterUser />}
+        {confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
+        {userRegistrationStage && <RegisterUser />}
       </RegistrationWrapper>
     )
   }

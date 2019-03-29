@@ -1,5 +1,5 @@
-const submit = async (state, dispatch, props) => {
-  console.log(state)
-}
+import { login } from '../../../actions/user'
+
+const submit = (state, dispatch) => dispatch(login(state))
 
 export default submit
