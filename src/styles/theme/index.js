@@ -1,8 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import { yellow } from '@material-ui/core/colors'
 
-import './index.scss'
-
 const theme = createMuiTheme({
   palette: {
     type: 'dark',

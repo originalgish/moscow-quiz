@@ -1,16 +1,16 @@
 import React from 'react'
 
-import './index.scss'
+import { Tooltip } from './styles'
 
 const TooltipTitle = () => (
-  <div className="tooltip-title">
+  <Tooltip>
     <p>
       На Ваш телефон в течение <br /> нескольких секунд придет <b>4</b>-значный код.
     </p>
     <p>
       Пример кода: <b>5874</b>
     </p>
-  </div>
+  </Tooltip>
 )
 
 export default TooltipTitle
