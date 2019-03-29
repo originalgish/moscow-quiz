@@ -1,9 +1,10 @@
-import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR, SUBMIT_CODE_ERROR } from '../../constants'
+import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR, SUBMIT_CODE_ERROR, REGISTER_USER_ERROR } from '../../constants'
 
 const initialState = {
   registrationStage: 'getCode',
-  getCodeError: '',
-  submitCodeError: ''
+  getErrorText: '',
+  submitErrorText: '',
+  registerUserErrorText: ''
 }
 
 const user = (state = initialState, { type, payload }) => {
@@ -16,12 +17,17 @@ const user = (state = initialState, { type, payload }) => {
     case GET_CODE_ERROR:
       return {
         ...state,
-        getCodeError: payload
+        getErrorText: payload
       }
     case SUBMIT_CODE_ERROR:
       return {
         ...state,
-        submitCodeError: payload
+        submitErrorText: payload
+      }
+    case REGISTER_USER_ERROR:
+      return {
+        ...state,
+        registerUserErrorText: payload
       }
 
     default:

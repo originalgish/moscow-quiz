@@ -7,6 +7,7 @@ import RenderTextField from '../../../components/RenderTextField'
 import RenderCheckbox from '../../../components/RenderCheckbox'
 import RenderButton from '../../../components/RenderButton'
 import RenderTextFieldPassword from '../../../components/RenderTextFieldPassword'
+import RenderSnackbar from '../../../components/RenderSnackbar'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
@@ -29,7 +30,7 @@ class RegisterUser extends Component {
   }
 
   render() {
-    const { handleSubmit, valid, submitting } = this.props
+    const { handleSubmit, valid, submitting, registerUserErrorText } = this.props
     return (
       <FullScreenCenter>
         <RegisterUserForm onSubmit={handleSubmit}>
@@ -53,6 +54,7 @@ class RegisterUser extends Component {
               согласно политике конфиденциальности."
           />
           <RenderButton type="submit" disabled={!valid || submitting} text="Зарегистрироваться" color="primary" />
+          {registerUserErrorText && <RenderSnackbar variant="error" message={registerUserErrorText} />}
         </RegisterUserForm>
       </FullScreenCenter>
     )
@@ -68,7 +70,8 @@ RegisterUser = reduxForm({
 })(RegisterUser)
 
 const mapStateToProps = state => ({
-  confirmedData: get(state.form, 'ConfirmPhone.values')
+  confirmedData: get(state.form, 'ConfirmPhone.values'),
+  registerUserErrorText: state.user.registerUserErrorText
 })
 
 const mapDispatchToProps = {

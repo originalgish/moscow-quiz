@@ -3,6 +3,7 @@ import { mapKeys } from 'lodash'
 import { CHANGE_REGISTRATION_STAGE, SUBMIT_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
+import { submitCodeErrors } from '../../api/errorCodes'
 
 const KEYS_MAPPING = {
   confirmationCode: 'code'
@@ -28,7 +29,7 @@ const submitCode = state => async dispatch => {
     payload: ''
   })
 
-  // const url = `${URLs.mock400}`
+  // const url = `${URLs.mock200}`
   const url = `${URLs.production}/api/v1/authenticate_phone`
   const request = await POST(url, mapStateKeys(state))
   const response = {
@@ -42,22 +43,10 @@ const submitCode = state => async dispatch => {
       payload: 'registerUser'
     })
   } else {
-    if (status === 401) {
-      dispatch({
-        type: SUBMIT_CODE_ERROR,
-        payload: 'Неправильно введен код'
-      })
-    } else if (status === 409) {
-      dispatch({
-        type: SUBMIT_CODE_ERROR,
-        payload: 'Произошла ошибка, попробуйте через минуту'
-      })
-    } else {
-      dispatch({
-        type: SUBMIT_CODE_ERROR,
-        payload: 'Произошла ошибка, попробуйте снова'
-      })
-    }
+    dispatch({
+      type: SUBMIT_CODE_ERROR,
+      payload: submitCodeErrors(status)
+    })
   }
 
   console.log(data, status)

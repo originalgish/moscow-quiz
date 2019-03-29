@@ -4,6 +4,7 @@ import history from '../../routes/history'
 import { REGISTER_USER_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
+import { registerUserCodeErrors } from '../../api/errorCodes'
 
 const KEYS_MAPPING = {
   firstName: 'name',
@@ -20,12 +21,14 @@ const mapStateKeys = state => {
 }
 
 const normalizeValues = state => {
-  const normalizedValues = {
-    ...state,
-    phone: state.phone.replace(/\D/g, ''),
-    code: Number(state.code)
+  if (state.code) {
+    const normalizedValues = {
+      ...state,
+      phone: state.phone.replace(/\D/g, ''),
+      code: Number(state.code)
+    }
+    return normalizedValues
   }
-  return normalizedValues
 }
 
 const getCode = state => async dispatch => {
@@ -33,7 +36,7 @@ const getCode = state => async dispatch => {
     type: REGISTER_USER_ERROR,
     payload: ''
   })
-  // const url = `${URLs.mock200}`
+  // const url = `${URLs.mock409}`
   const url = `${URLs.production}/api/v1/register`
   const request = await POST(url, mapStateKeys(state))
   const response = {
@@ -44,22 +47,10 @@ const getCode = state => async dispatch => {
   if (status === 200) {
     history.push('/login')
   } else {
-    if (status === 409) {
-      dispatch({
-        type: REGISTER_USER_ERROR,
-        payload: 'E-mail или никнейм не уникален'
-      })
-    } else if (status === 444) {
-      dispatch({
-        type: REGISTER_USER_ERROR,
-        payload: 'Ошибка соединения с сервером'
-      })
-    } else {
-      dispatch({
-        type: REGISTER_USER_ERROR,
-        payload: 'Произошла ошибка, попробуйте снова'
-      })
-    }
+    dispatch({
+      type: REGISTER_USER_ERROR,
+      payload: registerUserCodeErrors(status)
+    })
   }
 
   console.log(data, status)

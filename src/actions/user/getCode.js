@@ -1,6 +1,7 @@
 import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
+import { getCodeErrors } from '../../api/errorCodes'
 
 const normalizeValues = state => {
   const normalizedValues = {
@@ -30,22 +31,10 @@ const getCode = state => async dispatch => {
       payload: 'submitCode'
     })
   } else {
-    if (status === 409) {
-      dispatch({
-        type: GET_CODE_ERROR,
-        payload: 'Номер уже зарегистрирован'
-      })
-    } else if (status === 407) {
-      dispatch({
-        type: GET_CODE_ERROR,
-        payload: 'Сообщение на указанный номер не может быть доставлено'
-      })
-    } else {
-      dispatch({
-        type: GET_CODE_ERROR,
-        payload: 'Произошла ошибка, попробуйте снова'
-      })
-    }
+    dispatch({
+      type: GET_CODE_ERROR,
+      payload: getCodeErrors(status)
+    })
   }
 
   console.log(data, status)

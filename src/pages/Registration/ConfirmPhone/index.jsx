@@ -56,7 +56,7 @@ class ConfirmPhone extends Component {
   getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('mm:ss')
 
   render() {
-    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getCodeError, submitCodeError } = this.props
+    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getErrorText, submitErrorText } = this.props
     const { getCodeTime } = this.state
     return (
       <FullScreenCenter>
@@ -65,7 +65,7 @@ class ConfirmPhone extends Component {
 
           <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
 
-          {submitCodeError && (
+          {submitErrorText && (
             <RenderButton
               type="button"
               disabled={getCodeTime !== 0}
@@ -97,8 +97,8 @@ class ConfirmPhone extends Component {
             onClick={this.startTimer}
           />
 
-          {getCodeError && <RenderSnackbar variant="error" message={getCodeError} />}
-          {submitCodeError && <RenderSnackbar variant="error" message={submitCodeError} />}
+          {getErrorText && <RenderSnackbar variant="error" message={getErrorText} />}
+          {submitErrorText && <RenderSnackbar variant="error" message={submitErrorText} />}
         </ConfirmPhoneForm>
       </FullScreenCenter>
     )
@@ -113,8 +113,8 @@ ConfirmPhone = reduxForm({
 })(ConfirmPhone)
 
 const mapStateToProps = state => ({
-  getCodeError: state.user.getCodeError,
-  submitCodeError: state.user.submitCodeError,
+  getErrorText: state.user.getErrorText,
+  submitErrorText: state.user.submitErrorText,
   formValues: getFormValues('ConfirmPhone')(state)
 })
 
