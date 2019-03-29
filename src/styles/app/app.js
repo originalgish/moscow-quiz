@@ -6,7 +6,7 @@ import './fonts.css'
 
 export const AppStyles = createGlobalStyle`
   body {
-    background-color: #212121;
+    background-color: #0e0e0e;
     font-family: Helvetica;
     font-size: 16px;
     color: #e0e0e0;
