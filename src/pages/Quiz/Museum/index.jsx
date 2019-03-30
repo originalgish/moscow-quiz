@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import SVGElements from './SVGElements'
 
 import museum from './img/museum.png'
+import { FullScreenCenter } from '../../../styles/app/app'
 import { MuseumImage, MuseumContainer, QuestionContainer, QuestionMarkButton } from './styles'
 
 class Museum extends Component {
@@ -44,17 +45,19 @@ class Museum extends Component {
   render() {
     const { points } = this.state
     return (
-      <MuseumContainer id="museum">
-        <SVGElements />
+      <FullScreenCenter>
+        <MuseumContainer id="museum">
+          <SVGElements />
 
-        <QuestionContainer>
-          {points.map(point => (
-            <QuestionMarkButton key={point.id} top={point.top} left={point.left} />
-          ))}
-        </QuestionContainer>
+          <QuestionContainer>
+            {points.map(point => (
+              <QuestionMarkButton key={point.id} top={point.top} left={point.left} />
+            ))}
+          </QuestionContainer>
 
-        <MuseumImage src={museum} alt="museum" />
-      </MuseumContainer>
+          <MuseumImage src={museum} alt="museum" />
+        </MuseumContainer>
+      </FullScreenCenter>
     )
   }
 }
