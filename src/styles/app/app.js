@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import './normalize.css'
 import './fonts.css'
@@ -36,4 +36,11 @@ export const FullScreenCenter = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  ${props =>
+    props.mobile &&
+    css`
+      align-items: flex-start;
+      overflow-y: auto;
+      padding: 1em 0;
+    `};
 `

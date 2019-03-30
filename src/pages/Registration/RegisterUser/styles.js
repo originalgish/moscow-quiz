@@ -17,7 +17,6 @@ export const RegisterUserContainer = styled.div`
 `
 const Text = styled.span`
   display: block;
-  font-family: Helvetica;
   font-size: 1em;
   font-weight: 400;
   color: #ffffff;

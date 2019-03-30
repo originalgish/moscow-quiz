@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 
 import Museum from './Museum'
-
-import { FullScreenCenter } from '../../styles/app/app'
+import Menu from './Menu'
 
 class Quiz extends Component {
   state = {}
 
   render() {
     return (
-      <FullScreenCenter>
+      <div>
         <Museum />
-      </FullScreenCenter>
+        <Menu />
+      </div>
     )
   }
 }
