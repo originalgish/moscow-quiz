@@ -1,4 +1,4 @@
-const onlyFiveNumbers = value => {
+const onlyFourNumbers = value => {
   if (!value) {
     return value
   }
@@ -12,4 +12,4 @@ const onlyFiveNumbers = value => {
   }
 }
 
-export { onlyFiveNumbers }
+export { onlyFourNumbers }

@@ -7,18 +7,18 @@ import { getCode } from '../../../actions/user'
 
 import RenderTextField from '../../../components/RenderTextField'
 import RenderButton from '../../../components/RenderButton'
-import RenderTooltip from '../../../components/RenderTooltip'
+// import RenderTooltip from '../../../components/RenderTooltip'
+// import TooltipTitle from './components/TooltipTitle'
 import RenderSnackbar from '../../../components/RenderSnackbar'
-import TooltipTitle from './components/TooltipTitle'
 
 import { phoneMask } from '../helpers/inputMask'
-import { onlyFiveNumbers } from '../helpers/normalize'
+import { onlyFourNumbers } from '../helpers/normalize'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
 
 import { FullScreenCenter } from '../../../styles/app/app'
-import { ConfirmPhoneForm, Title } from './styles'
+import { ConfirmPhoneForm, Title, ConfirmPhoneContainer, FormTitle, LoginCall, StyledLink } from './styles'
 
 class ConfirmPhone extends Component {
   constructor(props) {
@@ -60,46 +60,48 @@ class ConfirmPhone extends Component {
     const { getCodeTime } = this.state
     return (
       <FullScreenCenter>
-        <ConfirmPhoneForm onSubmit={handleSubmit}>
-          <Title>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</Title>
+        <ConfirmPhoneContainer>
+          <Title>Московский закупочный квест</Title>
+          <ConfirmPhoneForm onSubmit={handleSubmit}>
+            <FormTitle>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</FormTitle>
 
-          <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
+            <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
+            {submitErrorText && (
+              <RenderButton
+                type="button"
+                disabled={getCodeTime !== 0}
+                text={`Получить код ${getCodeTime !== 0 ? `через ${this.getFormattedSeconds(getCodeTime)}` : ``}`}
+                color="secondary"
+                onClick={this.getCodeAgain}
+              />
+            )}
 
-          {submitErrorText && (
-            <RenderButton
-              type="button"
-              disabled={getCodeTime !== 0}
-              text={`Получить код повторно ${
-                getCodeTime !== 0 ? `через ${this.getFormattedSeconds(getCodeTime)}` : ``
-              }`}
-              color="secondary"
-              onClick={this.getCodeAgain}
-            />
-          )}
-
-          {submitCodeStage && (
-            <RenderTooltip disableFocusListener disableTouchListener title={<TooltipTitle />} placement="right">
+            {submitCodeStage && (
               <Field
                 name="confirmationCode"
                 component={RenderTextField}
                 label="Код подтверждения"
                 type="number"
-                normalize={onlyFiveNumbers}
+                normalize={onlyFourNumbers}
               />
-            </RenderTooltip>
-          )}
+            )}
 
-          <RenderButton
-            type="submit"
-            disabled={!valid || submitting}
-            text={getCodeStage ? 'Получить код' : 'Отправить код'}
-            color="primary"
-            onClick={this.startTimer}
-          />
+            <RenderButton
+              type="submit"
+              disabled={!valid || submitting}
+              text={getCodeStage ? 'Получить код' : 'Отправить код'}
+              color="primary"
+              onClick={this.startTimer}
+            />
 
-          {getErrorText && <RenderSnackbar variant="error" message={getErrorText} />}
-          {submitErrorText && <RenderSnackbar variant="error" message={submitErrorText} />}
-        </ConfirmPhoneForm>
+            <LoginCall>
+              Уже зарегистрированы? <StyledLink to="/login">Войти</StyledLink>
+            </LoginCall>
+
+            {getErrorText && <RenderSnackbar variant="error" message={getErrorText} />}
+            {submitErrorText && <RenderSnackbar variant="error" message={submitErrorText} />}
+          </ConfirmPhoneForm>
+        </ConfirmPhoneContainer>
       </FullScreenCenter>
     )
   }

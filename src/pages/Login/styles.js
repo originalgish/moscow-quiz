@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const LoginForm = styled.form`
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
   margin: 0 25px;
   @media screen and (max-width: 600px) {
     margin: 0;
@@ -44,6 +44,4 @@ export const StyledLink = styled(Link)`
   color: #ffffff;
   ${Text}
 `
-export const ForgotPassword = styled(Text)`
-  margin-top: 1em;
-`
+export const ForgotPassword = styled(Text)``

@@ -1,17 +1,47 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const ConfirmPhoneForm = styled.form`
   width: 100%;
   max-width: 400px;
   margin: 0 25px;
-  background-color: #424242;
-  border-radius: 4px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  padding: 16px 24px 24px;
-  @media screen and (max-width: 500px) {
-    background-color: transparent;
+  @media screen and (max-width: 600px) {
     margin: 0;
-    box-shadow: none;
   }
 `
-export const Title = styled.h1``
+export const ConfirmPhoneContainer = styled.div`
+  display: flex;
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
+`
+const Text = styled.span`
+  display: block;
+  font-family: Helvetica;
+  font-size: 1em;
+  font-weight: 400;
+  color: #ffffff;
+`
+export const Title = styled.h1`
+  margin: 0;
+  font-size: 2em;
+  text-align: right;
+  padding-right: 25px;
+  border-right: 2px solid #dbdbdb;
+  max-width: 300px;
+  @media screen and (max-width: 600px) {
+    border: none;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+  ${Text}
+`
+export const FormTitle = styled(Text)`
+  margin-bottom: 1em;
+  font-size: 1.2em;
+`
+export const LoginCall = styled(Text)``
+export const StyledLink = styled(Link)`
+  color: #ffffff;
+  ${Text}
+`

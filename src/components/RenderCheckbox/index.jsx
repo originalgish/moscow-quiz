@@ -1,13 +1,22 @@
 import React from 'react'
 import { FormControlLabel, Checkbox } from '@material-ui/core/'
+import { withStyles } from '@material-ui/core/styles'
 
-const RenderCheckbox = ({ input, label }) => (
+const styles = theme => ({
+  checkbox: {
+    marginBottom: theme.spacing.unit * 2
+  }
+})
+
+const RenderCheckbox = ({ input, label, classes }) => (
   <div className="render-checkbox">
     <FormControlLabel
-      control={<Checkbox onChange={input.onChange} checked={input.value} color="primary" />}
+      control={
+        <Checkbox onChange={input.onChange} checked={input.value} color="primary" className={classes.checkbox} />
+      }
       label={label}
     />
   </div>
 )
 
-export default RenderCheckbox
+export default withStyles(styles)(RenderCheckbox)
