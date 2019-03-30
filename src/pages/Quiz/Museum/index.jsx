@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import SVGElements from './SVGElements'
+import ProgressBar from './ProgressBar'
 
 import museum from './img/museum.png'
 import { FullScreenCenter } from '../../../styles/app/app'
@@ -56,6 +57,7 @@ class Museum extends Component {
           </QuestionContainer>
 
           <MuseumImage src={museum} alt="museum" />
+          <ProgressBar />
         </MuseumContainer>
       </FullScreenCenter>
     )
