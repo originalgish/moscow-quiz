@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field, initialize } from 'redux-form'
 import { get } from 'lodash'
+import { isMobile } from 'react-device-detect'
 
 import RenderTextField from '../../../components/RenderTextField'
 import RenderCheckbox from '../../../components/RenderCheckbox'
@@ -32,7 +33,7 @@ class RegisterUser extends Component {
   render() {
     const { handleSubmit, valid, submitting, registerUserErrorText } = this.props
     return (
-      <FullScreenCenter>
+      <FullScreenCenter mobile={isMobile}>
         <RegisterUserContainer>
           <Title>Московский закупочный квест</Title>
 
