@@ -1,22 +1,17 @@
 const GET = async (url = '') =>
   await fetch(url, {
     method: 'GET',
-    credentials: 'include',
     headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true
+      'Content-Type': 'application/json; charset=utf-8'
     }
   })
 
-const POST = async (url = '', data = {}) =>
+const POST = async (url = '', data, token) =>
   await fetch(url, {
     method: 'POST',
-    credentials: 'include',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Credentials': true
+      ...(token && { Authorization: `Bearer ${token}` })
     },
     body: JSON.stringify(data)
   })

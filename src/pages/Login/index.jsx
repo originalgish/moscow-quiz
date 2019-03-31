@@ -6,6 +6,7 @@ import { get } from 'lodash'
 import RenderTextField from '../../components/RenderTextField'
 import RenderTextFieldPassword from '../../components/RenderTextFieldPassword'
 import RenderButton from '../../components/RenderButton'
+import RenderSnackbar from '../../components/RenderSnackbar'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
@@ -24,7 +25,7 @@ class Login extends Component {
   }
 
   render() {
-    const { handleSubmit, valid, submitting } = this.props
+    const { handleSubmit, valid, submitting, loginErrorText } = this.props
     return (
       <FullScreenCenter>
         <LoginContainer>
@@ -43,6 +44,7 @@ class Login extends Component {
             </ForgotPassword>
           </LoginForm>
         </LoginContainer>
+        {loginErrorText && <RenderSnackbar variant="error" message={loginErrorText} />}
       </FullScreenCenter>
     )
   }
@@ -55,7 +57,8 @@ Login = reduxForm({
 })(Login)
 
 const mapStateToProps = state => ({
-  registrationEmail: get(state.form, 'ConfirmEmail.values.email')
+  registrationEmail: get(state.form, 'ConfirmEmail.values.email'),
+  loginErrorText: state.user.loginErrorText
 })
 
 const mapDispatchToProps = {

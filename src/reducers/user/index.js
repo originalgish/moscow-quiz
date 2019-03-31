@@ -9,9 +9,13 @@ import {
   AUTH_USER
 } from '../../constants'
 
+import { keys } from '../../keys'
+
+const isAuthenticated = localStorage.getItem(keys.accessToken)
+
 const initialState = {
   registrationStage: 'getPhoneCode',
-  isAuthenticated: false
+  isAuthenticated
 }
 
 const user = (state = initialState, { type, payload }) => {

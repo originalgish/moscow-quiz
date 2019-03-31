@@ -1,6 +1,6 @@
 import history from '../../routes/history'
-import { LOGIN_ERROR } from '../../constants'
-import { URLs } from '../../keys'
+import { LOGIN_ERROR, AUTH_USER } from '../../constants'
+import { URLs, keys } from '../../keys'
 import { POST } from '../../api/fetch'
 import { loginErrors } from '../../api/errorCodes'
 
@@ -18,7 +18,14 @@ const Login = state => async dispatch => {
   }
   const { data, status } = response
   if (status === 200) {
-    history.push('/quiz')
+    if (data.access_token) {
+      localStorage.setItem(keys.accessToken, data.access_token)
+      dispatch({
+        type: AUTH_USER,
+        payload: true
+      })
+      history.push('/quiz')
+    }
   } else {
     dispatch({
       type: LOGIN_ERROR,

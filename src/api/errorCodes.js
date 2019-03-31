@@ -58,6 +58,8 @@ const registerUserCodeErrors = code => {
 
 const loginErrors = code => {
   switch (code) {
+    case 401:
+      return 'Неправильный e-mail или пароль'
     default:
       return 'Произошла ошибка, попробуйте снова'
   }

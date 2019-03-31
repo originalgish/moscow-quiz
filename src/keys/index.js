@@ -6,4 +6,8 @@ const URLs = {
   mock409: 'http://www.mocky.io/v2/5c97515a2f00005d009f2dca?mocky-delay=500ms'
 }
 
-export { URLs }
+const keys = {
+  accessToken: '_mquat'
+}
+
+export { URLs, keys }
