@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 export const Wrapper = styled.div`
-  padding: 0 10%;
+  width: 900px;
   @media screen and (max-width: 600px) {
-    padding: 0;
+    width: 100%;
   }
 `
 export const Title = styled.h1`
@@ -15,7 +15,7 @@ export const Title = styled.h1`
   text-align: center;
   color: #ffffff;
   text-transform: uppercase;
-  margin-top: 150px;
+  margin-top: 0px;
   padding-bottom: 20px;
   position: relative;
   &::after {
@@ -28,9 +28,6 @@ export const Title = styled.h1`
     height: 3px;
     background-color: #ffffff;
     border-radius: 4px;
-  }
-  @media screen and (max-width: 600px) {
-    margin-top: 100px;
   }
 `
 export const City = styled.h2`
@@ -65,7 +62,8 @@ export const NavLink = styled(Link)`
   text-align: center;
   color: #ffffff;
   text-transform: uppercase;
-  width: 300px;
+  width: 100%;
+  max-width: 250px;
   padding: 1em 0;
   border-radius: 20px;
   border: solid 3px #ffffff;
