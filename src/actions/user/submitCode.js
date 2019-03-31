@@ -29,8 +29,8 @@ const submitCode = state => async dispatch => {
     payload: ''
   })
 
-  // const url = `${URLs.mock200}`
-  const url = `${URLs.production}/api/v1/authenticate_phone`
+  const url = `${URLs.mock200}`
+  // const url = `${URLs.production}/api/v1/authenticate_phone`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),

@@ -8,7 +8,7 @@ import {
 } from '../../constants'
 
 const initialState = {
-  registrationStage: 'getCode',
+  registrationStage: 'getPhoneCode',
   isAuthenticated: false
 }
 

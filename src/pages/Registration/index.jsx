@@ -10,15 +10,15 @@ class Registration extends Component {
   state = {}
   render() {
     const { registrationStage } = this.props
-    const confirmationStage = registrationStage === 'getCode' || registrationStage === 'submitCode'
+    const confirmationStage = registrationStage === 'getPhoneCode' || registrationStage === 'submitCode'
     const userRegistrationStage = registrationStage === 'registerUser'
-    const getCodeStage = registrationStage === 'getCode'
+    const getCodeStage = registrationStage === 'getPhoneCode'
     const submitCodeStage = registrationStage === 'submitCode'
 
     return (
       <RegistrationWrapper>
-        {!confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
-        {!userRegistrationStage && <RegisterUser />}
+        {confirmationStage && <ConfirmPhone getCodeStage={getCodeStage} submitCodeStage={submitCodeStage} />}
+        {userRegistrationStage && <RegisterUser />}
       </RegistrationWrapper>
     )
   }

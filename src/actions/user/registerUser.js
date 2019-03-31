@@ -31,13 +31,13 @@ const normalizeValues = state => {
   }
 }
 
-const getCode = state => async dispatch => {
+const RegisterUser = state => async dispatch => {
   dispatch({
     type: REGISTER_USER_ERROR,
     payload: ''
   })
-  // const url = `${URLs.mock409}`
-  const url = `${URLs.production}/api/v1/register`
+  const url = `${URLs.mock200}`
+  // const url = `${URLs.production}/api/v1/register`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),
@@ -57,4 +57,4 @@ const getCode = state => async dispatch => {
   return request
 }
 
-export default getCode
+export default RegisterUser

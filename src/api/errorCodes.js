@@ -1,4 +1,4 @@
-const getCodeErrors = code => {
+const getPhoneCodeErrors = code => {
   switch (code) {
     case 407:
       return 'Сообщение на указанный номер не может быть доставлено'
@@ -41,4 +41,4 @@ const loginErrors = code => {
   }
 }
 
-export { getCodeErrors, submitCodeErrors, registerUserCodeErrors, loginErrors }
+export { getPhoneCodeErrors, submitCodeErrors, registerUserCodeErrors, loginErrors }

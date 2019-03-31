@@ -1,7 +1,7 @@
 import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
-import { getCodeErrors } from '../../api/errorCodes'
+import { getPhoneCodeErrors } from '../../api/errorCodes'
 
 const normalizeValues = state => {
   const normalizedValues = {
@@ -11,14 +11,14 @@ const normalizeValues = state => {
   return normalizedValues
 }
 
-const getCode = state => async dispatch => {
+const getPhoneCode = state => async dispatch => {
   dispatch({
     type: GET_CODE_ERROR,
     payload: ''
   })
 
-  // const url = `${URLs.mock200}`
-  const url = `${URLs.production}/api/v1/initialize_phone`
+  const url = `${URLs.mock200}`
+  // const url = `${URLs.production}/api/v1/initialize_phone`
   const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
@@ -33,7 +33,7 @@ const getCode = state => async dispatch => {
   } else {
     dispatch({
       type: GET_CODE_ERROR,
-      payload: getCodeErrors(status)
+      payload: getPhoneCodeErrors(status)
     })
   }
 
@@ -41,4 +41,4 @@ const getCode = state => async dispatch => {
   return request
 }
 
-export default getCode
+export default getPhoneCode

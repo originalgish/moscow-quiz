@@ -4,7 +4,7 @@ import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 import { loginErrors } from '../../api/errorCodes'
 
-const getCode = state => async dispatch => {
+const Login = state => async dispatch => {
   dispatch({
     type: LOGIN_ERROR,
     payload: ''
@@ -30,4 +30,4 @@ const getCode = state => async dispatch => {
   return request
 }
 
-export default getCode
+export default Login
