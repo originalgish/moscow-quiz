@@ -17,7 +17,7 @@ const mapStateKeys = state => {
 const normalizeValues = state => {
   const normalizedValues = {
     ...state,
-    phone: state.phone.replace(/\D/g, '')
+    phone: Number(state.phone.replace(/\D/g, ''))
   }
   return normalizedValues
 }
