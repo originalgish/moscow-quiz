@@ -3,9 +3,12 @@ import styled from 'styled-components'
 import questionMark from './img/question-mark.svg'
 
 export const MuseumContainer = styled.div`
-  position: relative;
-  width: 70%;
-  height: 70%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 90%;
 `
 export const MuseumImage = styled.img`
   position: absolute;
@@ -38,12 +41,10 @@ export const QuestionMarkButton = styled.button`
   top: ${props => `${props.top}px`};
   left: ${props => `${props.left}px`};
   transform: translate(-50%, -50%);
-  width: 4%;
-  height: 6%;
-  max-width: 30px;
-  max-height: 25px;
+  width: 3%;
+  height: 8%;
   background-image: url(${questionMark});
-  background-size: contain;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
 `

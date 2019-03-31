@@ -14,6 +14,8 @@ class Quiz extends Component {
   }
 
   render() {
+    const { position } = this.props
+    console.log(position)
     return (
       <div>
         <Museum />
@@ -23,7 +25,9 @@ class Quiz extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  position: state.quiz.position
+})
 
 const mapDispatchToProps = {
   getPosition
