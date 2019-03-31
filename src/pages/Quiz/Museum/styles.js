@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import questionMark from './img/question-mark.svg'
+import questionMark from './img/question-mark-sign.svg'
 
 export const MuseumContainer = styled.div`
   position: absolute;
@@ -18,7 +18,6 @@ export const MuseumImage = styled.img`
   height: 100%;
   object-fit: contain;
   font-family: 'object-fit: contain;';
-  /* opacity: 0.2; */
 `
 export const SVGContainer = styled.svg`
   position: absolute;

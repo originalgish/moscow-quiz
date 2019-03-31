@@ -1,7 +1,9 @@
-import { GET_POSITION } from '../../constants'
+import { GET_POSITION, GET_QUESTION, TOGGLE_QUESTION_MODAL } from '../../constants'
 
 const initialState = {
-  position: {}
+  position: {},
+  question: {},
+  questionModalIsShown: false
 }
 
 const quiz = (state = initialState, { type, payload }) => {
@@ -10,6 +12,16 @@ const quiz = (state = initialState, { type, payload }) => {
       return {
         ...state,
         position: payload
+      }
+    case GET_QUESTION:
+      return {
+        ...state,
+        question: payload
+      }
+    case TOGGLE_QUESTION_MODAL:
+      return {
+        ...state,
+        questionModalIsShown: payload
       }
     default:
       return state

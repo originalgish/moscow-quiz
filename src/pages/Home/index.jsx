@@ -17,9 +17,8 @@ const Home = () => (
         <Info>QUI DOLOREM EUM FUGIAT, QUO APRIL 4TH 20:00 VOLUPTAS NULLA PARIATUR. </Info>
       </InfoWrapper>
       <Navigation>
-        <NavLink to="/quiz">Пройти квест</NavLink>
         <NavLink to="/registration">Регистрация</NavLink>
-        <NavLink to="/login">Войти</NavLink>
+        <NavLink to="/quiz">Войти</NavLink>
       </Navigation>
     </Wrapper>
   </FullScreenCenter>

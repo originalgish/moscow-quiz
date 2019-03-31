@@ -10,3 +10,6 @@ export const AUTH_USER = 'AUTH_USER'
 
 //quiz
 export const GET_POSITION = 'GET_POSITION'
+export const GET_QUESTION = 'GET_QUESTION'
+export const TOGGLE_QUESTION_MODAL = 'TOGGLE_QUESTION_MODAL'
+// export const HIDE_QUESTION_MODAL = 'HIDE_QUESTION_MODAL'

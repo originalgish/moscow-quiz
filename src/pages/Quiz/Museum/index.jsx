@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-import { getPosition } from '../../../actions/quiz'
 
 import SVGElements from './SVGElements'
-import Lights from './Lights'
-// import ProgressBar from './ProgressBar'
+// import Lights from './Lights'
 
 import museum from './img/museum.png'
 import { FullScreenCenter } from '../../../styles/app/app'
@@ -49,35 +45,33 @@ class Museum extends Component {
 
   render() {
     const { points } = this.state
-    const { position } = this.props
+    const { position, getQuestion, question } = this.props
+    const avaliablePositions = position.available_positions || []
+    console.log(question)
     return (
       <FullScreenCenter>
         <MuseumContainer id="museum">
           <SVGElements />
 
+          {/* <Lights /> */}
+          <MuseumImage src={museum} alt="museum" />
+
           <QuestionContainer>
             {points.map(point => (
-              <QuestionMarkButton key={point.id} top={point.top} left={point.left} disabled />
+              <QuestionMarkButton
+                key={point.id}
+                top={point.top}
+                left={point.left}
+                disabled={!avaliablePositions.includes(point.id)}
+                data-id={point.id}
+                onClick={getQuestion}
+              />
             ))}
           </QuestionContainer>
-          <Lights />
-          <MuseumImage src={museum} alt="museum" />
-          {/* <ProgressBar /> */}
         </MuseumContainer>
       </FullScreenCenter>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  position: state.quiz.position
-})
-
-const mapDispatchToProps = {
-  getPosition
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Museum)
+export default Museum
