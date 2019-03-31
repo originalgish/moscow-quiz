@@ -47,6 +47,7 @@ export const QuestionMarkButton = styled.button`
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  cursor: pointer;
   &:disabled {
     opacity: 0.4;
   }

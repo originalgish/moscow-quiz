@@ -15,9 +15,9 @@ const SVGElements = () => (
         <circle id="Oval-6" fill="none" cx="699" cy="683" r="5" />
         <circle id="Oval-7" fill="none" cx="404" cy="560" r="5" />
         <circle id="Oval-8" fill="none" cx="449" cy="559" r="5" />
-        <circle id="Oval-9" fill="none" cx="376" cy="454" r="5" />
+        <circle id="Oval-9" fill="none" cx="245" cy="456" r="5" />
         <circle id="Oval-10" fill="none" cx="423" cy="454" r="5" />
-        <circle id="Oval-11" fill="none" cx="469" cy="454" r="5" />
+        <circle id="Oval-11" fill="none" cx="600" cy="456" r="5" />
         <circle id="Oval-12" fill="none" cx="422" cy="319" r="5" />
       </g>
     </g>

@@ -45,9 +45,8 @@ class Museum extends Component {
 
   render() {
     const { points } = this.state
-    const { position, getQuestion, question } = this.props
-    const avaliablePositions = position.available_positions || []
-    console.log(question)
+    const { avaliablePositions, getQuestion } = this.props
+
     return (
       <FullScreenCenter>
         <MuseumContainer id="museum">
