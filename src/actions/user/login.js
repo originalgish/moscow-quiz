@@ -9,8 +9,8 @@ const Login = state => async dispatch => {
     type: LOGIN_ERROR,
     payload: ''
   })
-  const url = `${URLs.mock200}`
-  // const url = `${URLs.production}/api/v1/initialize_phone`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/login`
   const request = await POST(url, state)
   const response = {
     data: await request.json(),

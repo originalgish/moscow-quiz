@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field, getFormValues } from 'redux-form'
 import { Duration } from 'luxon'
 
-import { getPhoneCode } from '../../../actions/user'
+import { getPhoneCode, changeRegistrationStage } from '../../../actions/user'
 
 import RenderTextField from '../../../components/RenderTextField'
 import RenderButton from '../../../components/RenderButton'
@@ -18,7 +18,15 @@ import submit from './utils/submit'
 import validate from './utils/validate'
 
 import { FullScreenCenter } from '../../../styles/app/app'
-import { ConfirmPhoneForm, Title, ConfirmPhoneContainer, FormTitle, LoginCall, StyledLink } from './styles'
+import {
+  ConfirmPhoneForm,
+  Title,
+  ConfirmPhoneContainer,
+  FormTitle,
+  LoginCall,
+  StyledLink,
+  SumbitAnotherPhone
+} from './styles'
 
 class ConfirmPhone extends Component {
   constructor(props) {
@@ -51,12 +59,25 @@ class ConfirmPhone extends Component {
 
   getCodeAgain = () => {
     this.props.getPhoneCode(this.props.formValues)
+    this.startTimer()
   }
 
   getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('mm:ss')
 
+  backToGetCodeStage = () => {
+    this.props.changeRegistrationStage('getPhoneCode')
+  }
+
   render() {
-    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getErrorText, submitErrorText } = this.props
+    const {
+      handleSubmit,
+      valid,
+      submitting,
+      getCodeStage,
+      submitCodeStage,
+      getPhoneErrorText,
+      submitPhoneErrorText
+    } = this.props
     const { getCodeTime } = this.state
     return (
       <FullScreenCenter>
@@ -65,24 +86,35 @@ class ConfirmPhone extends Component {
           <ConfirmPhoneForm onSubmit={handleSubmit}>
             <FormTitle>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</FormTitle>
 
-            <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
-            {submitErrorText && (
+            <Field
+              name="phone"
+              component={RenderTextField}
+              label="Телефон"
+              type="tel"
+              disabled={submitCodeStage}
+              {...phoneMask}
+            />
+            {submitCodeStage && (
+              <SumbitAnotherPhone onClick={this.backToGetCodeStage}>Указать другой номер</SumbitAnotherPhone>
+            )}
+
+            {submitCodeStage && (
+              <Field
+                name="phoneConfirmationCode"
+                component={RenderTextField}
+                label="Код подтверждения"
+                type="number"
+                normalize={onlyFourNumbers}
+              />
+            )}
+
+            {submitPhoneErrorText && (
               <RenderButton
                 type="button"
                 disabled={getCodeTime !== 0}
                 text={`Получить код ${getCodeTime !== 0 ? `через ${this.getFormattedSeconds(getCodeTime)}` : ``}`}
                 color="secondary"
                 onClick={this.getCodeAgain}
-              />
-            )}
-
-            {submitCodeStage && (
-              <Field
-                name="confirmationCode"
-                component={RenderTextField}
-                label="Код подтверждения"
-                type="number"
-                normalize={onlyFourNumbers}
               />
             )}
 
@@ -98,8 +130,8 @@ class ConfirmPhone extends Component {
               Уже зарегистрированы? <StyledLink to="/login">Войти</StyledLink>
             </LoginCall>
 
-            {getErrorText && <RenderSnackbar variant="error" message={getErrorText} />}
-            {submitErrorText && <RenderSnackbar variant="error" message={submitErrorText} />}
+            {getPhoneErrorText && <RenderSnackbar variant="error" message={getPhoneErrorText} />}
+            {submitPhoneErrorText && <RenderSnackbar variant="error" message={submitPhoneErrorText} />}
           </ConfirmPhoneForm>
         </ConfirmPhoneContainer>
       </FullScreenCenter>
@@ -115,13 +147,14 @@ ConfirmPhone = reduxForm({
 })(ConfirmPhone)
 
 const mapStateToProps = state => ({
-  getErrorText: state.user.getErrorText,
-  submitErrorText: state.user.submitErrorText,
+  getPhoneErrorText: state.user.getPhoneErrorText,
+  submitPhoneErrorText: state.user.submitPhoneErrorText,
   formValues: getFormValues('ConfirmPhone')(state)
 })
 
 const mapDispatchToProps = {
-  getPhoneCode
+  getPhoneCode,
+  changeRegistrationStage
 }
 
 export default connect(

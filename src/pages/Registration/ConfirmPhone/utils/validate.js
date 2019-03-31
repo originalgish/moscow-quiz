@@ -7,10 +7,10 @@ const validate = values => {
     errors.phone = 'Введите корректный номер телефона'
   }
 
-  if (!values.confirmationCode) {
-    errors.confirmationCode = 'Обязательное поле'
-  } else if (values.confirmationCode.length !== 4) {
-    errors.confirmationCode = 'Введите 4 цифры'
+  if (!values.phoneConfirmationCode) {
+    errors.phoneConfirmationCode = 'Обязательное поле'
+  } else if (values.phoneConfirmationCode.length !== 4) {
+    errors.phoneConfirmationCode = 'Введите 4 цифры'
   }
 
   return errors

@@ -25,6 +25,8 @@ const validate = values => {
 
   if (!values.city) {
     errors.city = 'Обязательное поле'
+  } else if (/[^а-яё ]/i.test(values.city)) {
+    errors.city = 'Город должен быть написан кириллицей'
   }
 
   if (!values.email) {

@@ -22,6 +22,28 @@ const submitCodeErrors = code => {
   }
 }
 
+const getEmailCodeErrors = code => {
+  switch (code) {
+    case 409:
+      return 'E-mail уже зарегистрирован'
+
+    default:
+      return 'Произошла ошибка, попробуйте снова'
+  }
+}
+
+const submitEmailCodeErrors = code => {
+  switch (code) {
+    case 401:
+      return 'Неправильно введен код'
+    case 409:
+      return 'Произошла ошибка, попробуйте через минуту'
+
+    default:
+      return 'Произошла ошибка, попробуйте снова'
+  }
+}
+
 const registerUserCodeErrors = code => {
   switch (code) {
     case 409:
@@ -41,4 +63,11 @@ const loginErrors = code => {
   }
 }
 
-export { getPhoneCodeErrors, submitCodeErrors, registerUserCodeErrors, loginErrors }
+export {
+  getPhoneCodeErrors,
+  submitCodeErrors,
+  getEmailCodeErrors,
+  submitEmailCodeErrors,
+  registerUserCodeErrors,
+  loginErrors
+}

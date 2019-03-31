@@ -1,12 +1,12 @@
 import { mapKeys } from 'lodash'
-
-import { CHANGE_REGISTRATION_STAGE, SUBMIT_CODE_ERROR } from '../../constants'
+import { SUBMIT_PHONE_CODE_ERROR } from '../../constants'
+import changeRegistrationStage from './changeRegistrationStage'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 import { submitCodeErrors } from '../../api/errorCodes'
 
 const KEYS_MAPPING = {
-  confirmationCode: 'code'
+  phoneConfirmationCode: 'code'
 }
 
 const mapStateKeys = state => {
@@ -17,20 +17,19 @@ const mapStateKeys = state => {
 const normalizeValues = state => {
   const normalizedValues = {
     ...state,
-    phone: state.phone.replace(/\D/g, ''),
-    code: Number(state.code)
+    phone: state.phone.replace(/\D/g, '')
   }
   return normalizedValues
 }
 
 const submitCode = state => async dispatch => {
   dispatch({
-    type: SUBMIT_CODE_ERROR,
+    type: SUBMIT_PHONE_CODE_ERROR,
     payload: ''
   })
 
-  const url = `${URLs.mock200}`
-  // const url = `${URLs.production}/api/v1/authenticate_phone`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/authenticate_phone`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),
@@ -38,13 +37,10 @@ const submitCode = state => async dispatch => {
   }
   const { data, status } = response
   if (status === 200) {
-    dispatch({
-      type: CHANGE_REGISTRATION_STAGE,
-      payload: 'registerUser'
-    })
+    dispatch(changeRegistrationStage('getEmailCode'))
   } else {
     dispatch({
-      type: SUBMIT_CODE_ERROR,
+      type: SUBMIT_PHONE_CODE_ERROR,
       payload: submitCodeErrors(status)
     })
   }

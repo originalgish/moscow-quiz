@@ -43,7 +43,7 @@ class RegisterUser extends Component {
             <Field name="lastName" component={RenderTextField} label="Фамилия" type="text" />
             <Field name="nickName" component={RenderTextField} label="Никнейм" type="text" />
             <Field name="city" component={RenderTextField} label="Город" type="text" />
-            <Field name="email" component={RenderTextField} label="E-mail" type="email" />
+            {/* <Field name="email" component={RenderTextField} label="E-mail" type="email" /> */}
             <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
             <Field
               name="confirmPassword"
@@ -79,7 +79,10 @@ RegisterUser = reduxForm({
 })(RegisterUser)
 
 const mapStateToProps = state => ({
-  confirmedData: get(state.form, 'ConfirmPhone.values'),
+  confirmedData: {
+    phone: get(state.form, 'ConfirmPhone.values.phone'),
+    email: get(state.form, 'ConfirmEmail.values.email')
+  },
   registerUserErrorText: state.user.registerUserErrorText
 })
 

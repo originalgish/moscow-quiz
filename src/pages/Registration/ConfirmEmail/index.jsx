@@ -3,24 +3,27 @@ import { connect } from 'react-redux'
 import { reduxForm, Field, getFormValues } from 'redux-form'
 import { Duration } from 'luxon'
 
-import { getPhoneCode } from '../../../actions/user'
+import { getEmailCode, changeRegistrationStage } from '../../../actions/user'
 
 import RenderTextField from '../../../components/RenderTextField'
 import RenderButton from '../../../components/RenderButton'
-// import RenderTooltip from '../../../components/RenderTooltip'
-// import TooltipTitle from './components/TooltipTitle'
 import RenderSnackbar from '../../../components/RenderSnackbar'
-
-import { phoneMask } from '../helpers/inputMask'
-import { onlyFourNumbers } from '../helpers/normalize'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
 
 import { FullScreenCenter } from '../../../styles/app/app'
-import { ConfirmPhoneForm, Title, ConfirmPhoneContainer, FormTitle, LoginCall, StyledLink } from './styles'
+import {
+  ConfirmEmailForm,
+  Title,
+  ConfirmEmailContainer,
+  FormTitle,
+  LoginCall,
+  StyledLink,
+  SumbitAnotherEmail
+} from './styles'
 
-class ConfirmPhone extends Component {
+class ConfirmEmail extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,22 +54,40 @@ class ConfirmPhone extends Component {
 
   getCodeAgain = () => {
     this.props.getPhoneCode(this.props.formValues)
+    this.startTimer()
   }
 
   getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('mm:ss')
 
+  backToGetCodeStage = () => {
+    this.props.changeRegistrationStage('getEmailCode')
+  }
+
   render() {
-    const { handleSubmit, valid, submitting, getCodeStage, submitCodeStage, getErrorText, submitErrorText } = this.props
+    const {
+      handleSubmit,
+      valid,
+      submitting,
+      getCodeStage,
+      submitCodeStage,
+      getEmailErrorText,
+      submitEmailErrorText
+    } = this.props
     const { getCodeTime } = this.state
     return (
       <FullScreenCenter>
-        <ConfirmPhoneContainer>
+        <ConfirmEmailContainer>
           <Title>Московский закупочный квест</Title>
-          <ConfirmPhoneForm onSubmit={handleSubmit}>
-            <FormTitle>{getCodeStage ? 'Введите номер телефона' : 'Подтвердите номер телефона'}</FormTitle>
+          <ConfirmEmailForm onSubmit={handleSubmit}>
+            <FormTitle>{getCodeStage ? 'Введите E-mail' : 'Подтвердите E-mail'}</FormTitle>
 
-            <Field name="phone" component={RenderTextField} label="Телефон" type="tel" {...phoneMask} />
-            {submitErrorText && (
+            <Field name="email" component={RenderTextField} label="E-mail" type="email" disabled={submitCodeStage} />
+            {submitCodeStage && (
+              <SumbitAnotherEmail onClick={this.backToGetCodeStage} type="button">
+                Указать другой E-mail
+              </SumbitAnotherEmail>
+            )}
+            {getEmailErrorText && (
               <RenderButton
                 type="button"
                 disabled={getCodeTime !== 0}
@@ -77,13 +98,7 @@ class ConfirmPhone extends Component {
             )}
 
             {submitCodeStage && (
-              <Field
-                name="confirmationCode"
-                component={RenderTextField}
-                label="Код подтверждения"
-                type="number"
-                normalize={onlyFourNumbers}
-              />
+              <Field name="emailConfirmationCode" component={RenderTextField} label="Код подтверждения" type="text" />
             )}
 
             <RenderButton
@@ -98,33 +113,34 @@ class ConfirmPhone extends Component {
               Уже зарегистрированы? <StyledLink to="/login">Войти</StyledLink>
             </LoginCall>
 
-            {getErrorText && <RenderSnackbar variant="error" message={getErrorText} />}
-            {submitErrorText && <RenderSnackbar variant="error" message={submitErrorText} />}
-          </ConfirmPhoneForm>
-        </ConfirmPhoneContainer>
+            {getEmailErrorText && <RenderSnackbar variant="error" message={getEmailErrorText} />}
+            {submitEmailErrorText && <RenderSnackbar variant="error" message={submitEmailErrorText} />}
+          </ConfirmEmailForm>
+        </ConfirmEmailContainer>
       </FullScreenCenter>
     )
   }
 }
 
-ConfirmPhone = reduxForm({
-  form: 'ConfirmPhone',
+ConfirmEmail = reduxForm({
+  form: 'ConfirmEmail',
   onSubmit: submit,
   validate,
   destroyOnUnmount: false
-})(ConfirmPhone)
+})(ConfirmEmail)
 
 const mapStateToProps = state => ({
-  getErrorText: state.user.getErrorText,
-  submitErrorText: state.user.submitErrorText,
-  formValues: getFormValues('ConfirmPhone')(state)
+  getEmailErrorText: state.user.getEmailErrorText,
+  submitEmailErrorText: state.user.submitEmailErrorText,
+  formValues: getFormValues('ConfirmEmail')(state)
 })
 
 const mapDispatchToProps = {
-  getPhoneCode
+  getEmailCode,
+  changeRegistrationStage
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConfirmPhone)
+)(ConfirmEmail)

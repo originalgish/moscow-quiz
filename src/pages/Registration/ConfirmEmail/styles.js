@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const ConfirmPhoneForm = styled.form`
+export const ConfirmEmailForm = styled.form`
   width: 100%;
   max-width: 400px;
   margin: 0 25px;
@@ -9,7 +9,7 @@ export const ConfirmPhoneForm = styled.form`
     margin: 0;
   }
 `
-export const ConfirmPhoneContainer = styled.div`
+export const ConfirmEmailContainer = styled.div`
   display: flex;
   @media screen and (max-width: 600px) {
     display: block;
@@ -34,6 +34,17 @@ export const Title = styled.h1`
     margin-bottom: 1em;
   }
   ${Text}
+`
+export const SumbitAnotherEmail = styled.button`
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1em;
+  text-decoration: underline;
+  padding-bottom: 2px;
 `
 export const FormTitle = styled(Text)`
   margin-bottom: 1em;

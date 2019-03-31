@@ -1,4 +1,5 @@
-import { CHANGE_REGISTRATION_STAGE, GET_CODE_ERROR } from '../../constants'
+import { GET_PHONE_CODE_ERROR } from '../../constants'
+import changeRegistrationStage from './changeRegistrationStage'
 import { URLs } from '../../keys'
 import { POST } from '../../api/fetch'
 import { getPhoneCodeErrors } from '../../api/errorCodes'
@@ -13,12 +14,12 @@ const normalizeValues = state => {
 
 const getPhoneCode = state => async dispatch => {
   dispatch({
-    type: GET_CODE_ERROR,
+    type: GET_PHONE_CODE_ERROR,
     payload: ''
   })
 
-  const url = `${URLs.mock200}`
-  // const url = `${URLs.production}/api/v1/initialize_phone`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/initialize_phone`
   const request = await POST(url, normalizeValues(state))
   const response = {
     data: await request.json(),
@@ -26,13 +27,10 @@ const getPhoneCode = state => async dispatch => {
   }
   const { data, status } = response
   if (status === 200) {
-    dispatch({
-      type: CHANGE_REGISTRATION_STAGE,
-      payload: 'submitCode'
-    })
+    dispatch(changeRegistrationStage('submitPhoneCode'))
   } else {
     dispatch({
-      type: GET_CODE_ERROR,
+      type: GET_PHONE_CODE_ERROR,
       payload: getPhoneCodeErrors(status)
     })
   }

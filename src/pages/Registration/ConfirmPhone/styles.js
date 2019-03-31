@@ -39,6 +39,17 @@ export const FormTitle = styled(Text)`
   margin-bottom: 1em;
   font-size: 1.2em;
 `
+export const SumbitAnotherPhone = styled.button`
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 1em;
+  text-decoration: underline;
+  padding-bottom: 2px;
+`
 export const LoginCall = styled(Text)``
 export const StyledLink = styled(Link)`
   color: #ffffff;

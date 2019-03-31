@@ -55,7 +55,7 @@ Login = reduxForm({
 })(Login)
 
 const mapStateToProps = state => ({
-  registrationEmail: get(state.form, 'RegisterUser.values.email')
+  registrationEmail: get(state.form, 'ConfirmEmail.values.email')
 })
 
 const mapDispatchToProps = {

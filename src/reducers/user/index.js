@@ -1,7 +1,9 @@
 import {
   CHANGE_REGISTRATION_STAGE,
-  GET_CODE_ERROR,
-  SUBMIT_CODE_ERROR,
+  GET_PHONE_CODE_ERROR,
+  SUBMIT_PHONE_CODE_ERROR,
+  GET_EMAIL_CODE_ERROR,
+  SUBMIT_EMAIL_CODE_ERROR,
   REGISTER_USER_ERROR,
   LOGIN_ERROR,
   AUTH_USER
@@ -19,15 +21,25 @@ const user = (state = initialState, { type, payload }) => {
         ...state,
         registrationStage: payload
       }
-    case GET_CODE_ERROR:
+    case GET_PHONE_CODE_ERROR:
       return {
         ...state,
-        getErrorText: payload
+        getPhoneErrorText: payload
       }
-    case SUBMIT_CODE_ERROR:
+    case SUBMIT_PHONE_CODE_ERROR:
       return {
         ...state,
-        submitErrorText: payload
+        submitPhoneErrorText: payload
+      }
+    case GET_EMAIL_CODE_ERROR:
+      return {
+        ...state,
+        getEmailErrorText: payload
+      }
+    case SUBMIT_EMAIL_CODE_ERROR:
+      return {
+        ...state,
+        submitEmailErrorText: payload
       }
     case REGISTER_USER_ERROR:
       return {

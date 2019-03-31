@@ -9,8 +9,7 @@ import { registerUserCodeErrors } from '../../api/errorCodes'
 const KEYS_MAPPING = {
   firstName: 'name',
   lastName: 'surname',
-  nickName: 'nickname',
-  confirmationCode: 'code'
+  nickName: 'nickname'
 }
 
 const mapStateKeys = state => {
@@ -21,11 +20,10 @@ const mapStateKeys = state => {
 }
 
 const normalizeValues = state => {
-  if (state.code) {
+  if (state.phone) {
     const normalizedValues = {
       ...state,
-      phone: state.phone.replace(/\D/g, ''),
-      code: Number(state.code)
+      phone: state.phone.replace(/\D/g, '')
     }
     return normalizedValues
   }
@@ -36,8 +34,8 @@ const RegisterUser = state => async dispatch => {
     type: REGISTER_USER_ERROR,
     payload: ''
   })
-  const url = `${URLs.mock200}`
-  // const url = `${URLs.production}/api/v1/register`
+  // const url = `${URLs.mock200}`
+  const url = `${URLs.production}/api/v1/register`
   const request = await POST(url, mapStateKeys(state))
   const response = {
     data: await request.json(),

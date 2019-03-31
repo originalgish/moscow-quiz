@@ -1,11 +1,11 @@
-import { getPhoneCode, submitCode } from '../../../../actions/user'
+import { getPhoneCode, submitPhoneCode } from '../../../../actions/user'
 
 const submit = (state, dispatch, props) => {
   const { getCodeStage } = props
   if (getCodeStage) {
     return dispatch(getPhoneCode(state))
   } else {
-    return dispatch(submitCode(state))
+    return dispatch(submitPhoneCode(state))
   }
 }
 
