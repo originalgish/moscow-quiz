@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import enhanceWithClickOutside from 'react-click-outside'
 
+import { keys } from '../../../keys'
+
 import MenuTable from './MenuTable'
 
 import { MenuBurger, BurgerElement } from './styles'
@@ -22,6 +24,10 @@ class Menu extends Component {
     this.closeMenu()
   }
 
+  removeTokenFromStorage = () => {
+    localStorage.removeItem(keys.accessToken)
+  }
+
   render() {
     const { menuIsOpen } = this.state
     return (
@@ -29,7 +35,7 @@ class Menu extends Component {
         <BurgerElement />
         <BurgerElement />
         <BurgerElement />
-        {menuIsOpen && <MenuTable />}
+        {menuIsOpen && <MenuTable removeTokenFromStorage={this.removeTokenFromStorage} />}
       </MenuBurger>
     )
   }

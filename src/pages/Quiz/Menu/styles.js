@@ -55,6 +55,7 @@ export const Row = styled.a`
   padding: 8px 40px;
   max-width: 380px;
   background-color: #0e0e0e;
+  text-decoration: none;
   &:first-child {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
