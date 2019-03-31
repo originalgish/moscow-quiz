@@ -18,6 +18,7 @@ export const MuseumImage = styled.img`
   height: 100%;
   object-fit: contain;
   font-family: 'object-fit: contain;';
+  /* opacity: 0.2; */
 `
 export const SVGContainer = styled.svg`
   position: absolute;
@@ -44,7 +45,10 @@ export const QuestionMarkButton = styled.button`
   width: 3%;
   height: 8%;
   background-image: url(${questionMark});
-  background-size: 100% 100%;
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  &:disabled {
+    opacity: 0.4;
+  }
 `

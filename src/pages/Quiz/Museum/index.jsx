@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { getPosition } from '../../../actions/quiz'
 
 import SVGElements from './SVGElements'
+import Lights from './Lights'
 // import ProgressBar from './ProgressBar'
 
 import museum from './img/museum.png'
@@ -45,6 +49,7 @@ class Museum extends Component {
 
   render() {
     const { points } = this.state
+    const { position } = this.props
     return (
       <FullScreenCenter>
         <MuseumContainer id="museum">
@@ -52,10 +57,10 @@ class Museum extends Component {
 
           <QuestionContainer>
             {points.map(point => (
-              <QuestionMarkButton key={point.id} top={point.top} left={point.left} />
+              <QuestionMarkButton key={point.id} top={point.top} left={point.left} disabled />
             ))}
           </QuestionContainer>
-
+          <Lights />
           <MuseumImage src={museum} alt="museum" />
           {/* <ProgressBar /> */}
         </MuseumContainer>
@@ -64,4 +69,15 @@ class Museum extends Component {
   }
 }
 
-export default Museum
+const mapStateToProps = state => ({
+  position: state.quiz.position
+})
+
+const mapDispatchToProps = {
+  getPosition
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Museum)

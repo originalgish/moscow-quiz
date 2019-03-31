@@ -10,12 +10,11 @@ class Quiz extends Component {
   state = {}
 
   componentDidMount() {
-    this.props.getPosition()
+    // this.props.getPosition()
   }
 
   render() {
     const { position } = this.props
-    console.log(position)
     return (
       <div>
         <Museum />
