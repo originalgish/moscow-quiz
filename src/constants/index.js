@@ -9,3 +9,4 @@ export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const AUTH_USER = 'AUTH_USER'
 
 //quiz
+export const GET_POSITION = 'GET_POSITION'
