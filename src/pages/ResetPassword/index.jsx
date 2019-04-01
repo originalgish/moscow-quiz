@@ -17,7 +17,7 @@ class ResetPassword extends Component {
   render() {
     const { handleSubmit, valid, submitting } = this.props
     return (
-      <FullScreenCenter>
+      <FullScreenCenter withImage>
         <ResetPasswordContainer>
           <Title>Московский закупочный квест</Title>
           <ResetPasswordForm onSubmit={handleSubmit}>

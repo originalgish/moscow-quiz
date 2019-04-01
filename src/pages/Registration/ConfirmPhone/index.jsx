@@ -80,7 +80,7 @@ class ConfirmPhone extends Component {
     } = this.props
     const { getCodeTime } = this.state
     return (
-      <FullScreenCenter>
+      <FullScreenCenter withImage>
         <ConfirmPhoneContainer>
           <Title>Московский закупочный квест</Title>
           <ConfirmPhoneForm onSubmit={handleSubmit}>

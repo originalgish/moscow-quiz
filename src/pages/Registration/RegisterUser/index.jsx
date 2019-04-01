@@ -33,7 +33,7 @@ class RegisterUser extends Component {
   render() {
     const { handleSubmit, valid, submitting, registerUserErrorText } = this.props
     return (
-      <FullScreenCenter mobile={isMobile}>
+      <FullScreenCenter mobile={isMobile} withImage>
         <RegisterUserContainer>
           <Title>Московский закупочный квест</Title>
 

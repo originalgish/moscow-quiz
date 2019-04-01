@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 import styled, { css } from 'styled-components'
 
+import castleRight from '../../img/castle-right.png'
+
 import './normalize.css'
 import './fonts.css'
 
@@ -42,5 +44,13 @@ export const FullScreenCenter = styled.div`
       align-items: flex-start;
       overflow-y: auto;
       padding: 1em 0;
+    `};
+  ${props =>
+    props.withImage &&
+    css`
+      background-image: url(${castleRight});
+      background-position: left bottom;
+      background-size: 30%;
+      background-repeat: no-repeat;
     `};
 `

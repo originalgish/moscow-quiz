@@ -73,9 +73,9 @@ class ConfirmEmail extends Component {
       getEmailErrorText,
       submitEmailErrorText
     } = this.props
-    const { getCodeTime } = this.state
+    // const { getCodeTime } = this.state
     return (
-      <FullScreenCenter>
+      <FullScreenCenter withImage>
         <ConfirmEmailContainer>
           <Title>Московский закупочный квест</Title>
           <ConfirmEmailForm onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ class ConfirmEmail extends Component {
                 Указать другой E-mail
               </SumbitAnotherEmail>
             )}
-            {getEmailErrorText && (
+            {/* {getEmailErrorText && (
               <RenderButton
                 type="button"
                 disabled={getCodeTime !== 0}
@@ -95,7 +95,7 @@ class ConfirmEmail extends Component {
                 color="secondary"
                 onClick={this.getCodeAgain}
               />
-            )}
+            )} */}
 
             {submitCodeStage && (
               <Field name="emailConfirmationCode" component={RenderTextField} label="Код подтверждения" type="text" />

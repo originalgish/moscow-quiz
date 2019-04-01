@@ -12,7 +12,7 @@ import submit from './utils/submit'
 import validate from './utils/validate'
 
 import { FullScreenCenter } from '../../styles/app/app'
-import { LoginForm, Title, ForgotPassword, LoginContainer, RegisterCall, StyledLink } from './styles'
+import { LoginForm, Title, LoginContainer, RegisterCall, StyledLink } from './styles'
 
 class Login extends Component {
   state = {}
@@ -27,7 +27,7 @@ class Login extends Component {
   render() {
     const { handleSubmit, valid, submitting, loginErrorText } = this.props
     return (
-      <FullScreenCenter>
+      <FullScreenCenter withImage>
         <LoginContainer>
           <Title>Московский закупочный квест</Title>
           <LoginForm onSubmit={handleSubmit} className="login-form">
@@ -39,9 +39,9 @@ class Login extends Component {
             <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
             <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
 
-            <ForgotPassword>
+            {/* <ForgotPassword>
               Забыли пароль? <StyledLink to="/reset_password">Напомнить</StyledLink>
-            </ForgotPassword>
+            </ForgotPassword> */}
           </LoginForm>
         </LoginContainer>
         {loginErrorText && <RenderSnackbar variant="error" message={loginErrorText} />}
