@@ -3,9 +3,9 @@ import { URLs, keys } from '../../keys'
 import { POST } from '../../api/fetch'
 
 const getQuestion = state => async dispatch => {
-  const url = `${URLs.mock_get_question}`
+  // const url = `${URLs.mock_get_question}`
   const token = localStorage.getItem(keys.accessToken)
-  // const url = `${URLs.production}/api/v1/move`
+  const url = `${URLs.production}/api/v1/move`
   const request = await POST(url, state, token)
   const response = {
     data: await request.json(),

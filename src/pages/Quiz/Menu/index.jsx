@@ -26,6 +26,7 @@ class Menu extends Component {
 
   removeTokenFromStorage = () => {
     localStorage.removeItem(keys.accessToken)
+    this.props.logout()
   }
 
   render() {

@@ -58,7 +58,7 @@ const user = (state = initialState, { type, payload }) => {
     case AUTH_USER:
       return {
         ...state,
-        isAuthenticated: true
+        isAuthenticated: payload
       }
 
     default:
