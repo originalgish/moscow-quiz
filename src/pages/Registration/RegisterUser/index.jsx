@@ -54,8 +54,14 @@ class RegisterUser extends Component {
             <Field
               name="policyAgreement"
               component={RenderCheckbox}
-              label="Я даю согласие на обработку персональных данных, 
-              согласно политике конфиденциальности."
+              label={
+                <span>
+                  Я даю согласие на обработку персональных данных, согласно{' '}
+                  <StyledLink to="/static/confidential.pdf" target="_blank" rel="noopener noreferrer">
+                    политике конфиденциальности
+                  </StyledLink>
+                </span>
+              }
             />
             <RenderButton type="submit" disabled={!valid || submitting} text="Зарегистрироваться" color="primary" />
             <LoginCall>

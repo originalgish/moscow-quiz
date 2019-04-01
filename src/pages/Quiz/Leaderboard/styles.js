@@ -87,7 +87,7 @@ export const Info = styled.div`
 export const InfoText = styled.span`
   display: block;
   font-family: Helvetica;
-  font-size: 1em;
+  font-size: 1.5em;
   line-height: 1.42;
   text-align: center;
   color: #ffffff;
