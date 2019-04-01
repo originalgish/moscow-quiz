@@ -9,6 +9,7 @@ import Museum from './Museum'
 import Menu from './Menu'
 import Question from './Question'
 import Clock from './Clock'
+// import Leaderboard from './Leaderboard'
 
 import { Wrapper } from './styles'
 
@@ -47,6 +48,7 @@ class Quiz extends Component {
         {questionModalIsShown && (
           <Question question={question} closeQuestionModal={this.closeQuestionModal} sendAnswer={this.sendAnswer} />
         )}
+        {/* <Leaderboard /> */}
       </Wrapper>
     )
   }

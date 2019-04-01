@@ -84,10 +84,7 @@ export const CloseButton = styled.button`
 export const Main = styled.main`
   padding: 0 40px;
   height: 100%;
-
   overflow-y: auto;
-  @media screen and (max-width: 600px) {
-  }
 `
 export const Timer = styled.div`
   font-family: Helvetica;
