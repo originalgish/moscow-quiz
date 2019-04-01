@@ -1,6 +1,9 @@
 import styled from 'styled-components'
+import objectFitImages from 'object-fit-images'
 
 import questionMark from './img/question-mark-sign.svg'
+
+objectFitImages()
 
 export const MuseumContainer = styled.div`
   position: absolute;

@@ -10,30 +10,54 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #0e0e0e;
-  @media screen and (max-width: 600px) {
-    align-items: flex-start;
-  }
-  @media screen and (max-height: 800px) {
+  overflow-y: hidden;
+  @media screen and (max-width: 600px), screen and (max-height: 700px) {
     align-items: flex-start;
   }
 `
 export const Modal = styled.div`
+  position: relative;
   max-width: 900px;
+  /* height: 70%; */
   border: solid 1px #d2992a;
   border-radius: 10px;
   background-color: #0e0e0e;
+  overflow: hidden;
+  padding-top: 3.5em;
+  @media screen and (max-height: 600px), screen and (max-width: 600px) {
+    height: calc(100% - 3.5em);
+  }
 `
 export const Header = styled.header`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #d2992a;
-  font-family: Helvetica;
-  font-size: 2em;
-  text-align: left;
-  color: #0e0e0e;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   padding: 10px 20px 10px 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 60px);
+  z-index: 1;
+  @media screen and (max-width: 600px) {
+    border-radius: 0;
+  }
+  ${props => {
+    if (props.hasAnswered && props.hasAnsweredCorrect) {
+      return css`
+        background-color: #889712;
+        border-color: #889712;
+      `
+    }
+    if (props.hasAnswered && !props.hasAnsweredCorrect) {
+      return css`
+        background-color: #90221b;
+        border-color: #90221b;
+      `
+    }
+  }}
 `
 export const CloseButton = styled.button`
   -webkit-appearance: none;
@@ -59,19 +83,17 @@ export const CloseButton = styled.button`
 `
 export const Main = styled.main`
   padding: 0 40px;
-  max-height: 700px;
+  height: 100%;
+
   overflow-y: auto;
+  @media screen and (max-width: 600px) {
+  }
 `
 export const Timer = styled.div`
-  position: relative;
-  width: 100%;
   font-family: Helvetica;
-  font-size: 3em;
+  font-size: 2.5em;
   text-align: right;
-  color: #ffffff;
-  margin-top: 25px;
-  display: flex;
-  align-items: center;
+  color: #0e0e0e;
 `
 export const Separator = styled.div`
   width: 100%;
@@ -182,6 +204,8 @@ export const AnswerButtonContainer = styled.div`
 export const Result = styled.span`
   display: block;
   text-align: center;
+  font-size: 1em;
+  color: #ffffff;
   margin: 1em 0;
 `
 export const ButtonBack = styled.button`

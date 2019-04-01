@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Duration } from 'luxon'
 
 import RenderButton from '../../../components/RenderButton'
 
@@ -17,13 +18,18 @@ import {
   AnswerButtonContainer,
   CloseButton,
   Result,
-  ButtonBack,
-  Separator
+  ButtonBack
+  // Separator
 } from './styles'
 
 class Question extends Component {
-  state = {
-    answers: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      answers: [],
+      time: 0
+    }
+    this.timer = null
   }
 
   componentDidMount() {
@@ -32,7 +38,25 @@ class Question extends Component {
       answerState: 'neutral'
     }))
     this.setState({ answers })
+
+    this.startTimer()
   }
+
+  componentWillUnmount() {
+    this.stopTimer()
+  }
+
+  startTimer = () => {
+    this.timer = setInterval(() => {
+      this.setState({ time: this.state.time + 1 })
+    }, 1000)
+  }
+
+  stopTimer = () => {
+    clearInterval(this.timer)
+  }
+
+  getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('h:mm:ss')
 
   chooseAnswer = e => {
     const id = Number(e.currentTarget.id)
@@ -55,26 +79,34 @@ class Question extends Component {
       correct: isChosenAnswerCorrect
     }
     this.props.sendAnswer(requestBody)
+    this.stopTimer()
   }
 
   render() {
     const { question, closeQuestionModal } = this.props
-    const { answers } = this.state
+    const { answers, time } = this.state
     const anythingChosen = answers.find(answer => answer.answerState === 'chosen')
     const hasAnswered = answers.find(answer => answer.answerState === 'correct' || answer.answerState === 'incorrect')
     const hasAnsweredCorrect = answers.find(answer => answer.answerState === 'correct')
     return (
       <Wrapper>
         <Modal>
-          <Header>
-            {`Московский закупочный квест. Вопрос ${Number(question.id) + 1}/13`}
+          <Header hasAnswered={hasAnswered} hasAnsweredCorrect={hasAnsweredCorrect}>
+            {/* {`Московский закупочный квест. Вопрос ${Number(question.id) + 1}/13`} */}
+            <Timer>{this.getFormattedSeconds(time)}</Timer>
+            {/* {hasAnswered && (
+              <Result>
+                {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
+                <ButtonBack onClick={closeQuestionModal}>Следующий вопрос?</ButtonBack>
+              </Result>
+            )} */}
             <CloseButton onClick={closeQuestionModal} />
           </Header>
           <Main>
-            <Timer>
+            {/* <Timer>
               <Separator />
-              0:15:25
-            </Timer>
+              {this.getFormattedSeconds(time)}
+            </Timer> */}
             <Intro>{question.intro}</Intro>
             <Text>{question.text}</Text>
             <Answers>
@@ -109,6 +141,15 @@ class Question extends Component {
                 />
               </AnswerButtonContainer>
             )}
+            {/* <AnswerButtonContainer>
+              <RenderButton
+                type="button"
+                text="Ответить"
+                color="primary"
+                disabled={anythingChosen === undefined}
+                onClick={this.confirmAnswer}
+              />
+            </AnswerButtonContainer> */}
           </Main>
         </Modal>
       </Wrapper>
