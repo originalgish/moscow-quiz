@@ -48,6 +48,7 @@ export const Info = styled.p`
   line-height: 1.21;
   text-align: center;
   color: #ffffff;
+  text-transform: uppercase;
 `
 export const Navigation = styled.div`
   width: 100%;

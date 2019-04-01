@@ -92,21 +92,11 @@ class Question extends Component {
       <Wrapper>
         <Modal>
           <Header hasAnswered={hasAnswered} hasAnsweredCorrect={hasAnsweredCorrect}>
-            {/* {`Московский закупочный квест. Вопрос ${Number(question.id) + 1}/13`} */}
             <Timer>{this.getFormattedSeconds(time)}</Timer>
-            {/* {hasAnswered && (
-              <Result>
-                {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
-                <ButtonBack onClick={closeQuestionModal}>Следующий вопрос?</ButtonBack>
-              </Result>
-            )} */}
             <CloseButton onClick={closeQuestionModal} />
           </Header>
+
           <Main>
-            {/* <Timer>
-              <Separator />
-              {this.getFormattedSeconds(time)}
-            </Timer> */}
             <Intro>{question.intro}</Intro>
             <Text>{question.text}</Text>
             <Answers>
@@ -141,15 +131,6 @@ class Question extends Component {
                 />
               </AnswerButtonContainer>
             )}
-            {/* <AnswerButtonContainer>
-              <RenderButton
-                type="button"
-                text="Ответить"
-                color="primary"
-                disabled={anythingChosen === undefined}
-                onClick={this.confirmAnswer}
-              />
-            </AnswerButtonContainer> */}
           </Main>
         </Modal>
       </Wrapper>
