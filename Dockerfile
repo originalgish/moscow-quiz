@@ -15,6 +15,7 @@ RUN mkdir /etc/nginx/ssl && chmod -R 600 /etc/nginx/ssl/ \
 
 COPY --from=build-env /usr/src/app/build/. /usr/share/nginx/html
 COPY bonanza.conf /etc/nginx/conf.d/bonanza.conf
+COPY static /usr/share/nginx/html/static
 COPY ssl/quizclub.app.chained.crt ssl/quizclub.app.key /etc/nginx/ssl/
 
 EXPOSE 443
