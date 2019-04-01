@@ -124,6 +124,7 @@ export const AnswerText = styled(Text)`
   padding: 40px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex: 1;
   transition: 0.3s ease;
   position: relative;

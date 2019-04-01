@@ -43,6 +43,7 @@ class Question extends Component {
   }
 
   confirmAnswer = () => {
+    const questionID = Number(this.props.question.id)
     const answers = [...this.state.answers]
     const chosenAnswer = answers.find(answer => answer.answerState === 'chosen')
     const chosenAnswerID = chosenAnswer.id
@@ -50,7 +51,7 @@ class Question extends Component {
     answers[chosenAnswerID].answerState = isChosenAnswerCorrect ? 'correct' : 'incorrect'
     this.setState({ answers })
     const requestBody = {
-      position: chosenAnswerID,
+      position: questionID,
       correct: isChosenAnswerCorrect
     }
     this.props.sendAnswer(requestBody)
@@ -58,6 +59,7 @@ class Question extends Component {
 
   render() {
     const { question, closeQuestionModal } = this.props
+    console.log(question)
     const { answers } = this.state
     const anythingChosen = answers.find(answer => answer.answerState === 'chosen')
     const hasAnswered = answers.find(answer => answer.answerState === 'correct' || answer.answerState === 'incorrect')
