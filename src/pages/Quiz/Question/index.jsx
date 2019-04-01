@@ -15,7 +15,10 @@ import {
   Radio,
   AnswerText,
   AnswerButtonContainer,
-  CloseButton
+  CloseButton,
+  Result,
+  ButtonBack,
+  Separator
 } from './styles'
 
 class Question extends Component {
@@ -58,7 +61,7 @@ class Question extends Component {
     const { answers } = this.state
     const anythingChosen = answers.find(answer => answer.answerState === 'chosen')
     const hasAnswered = answers.find(answer => answer.answerState === 'correct' || answer.answerState === 'incorrect')
-
+    const hasAnsweredCorrect = answers.find(answer => answer.answerState === 'correct')
     return (
       <Wrapper>
         <Modal>
@@ -67,7 +70,10 @@ class Question extends Component {
             <CloseButton onClick={closeQuestionModal} />
           </Header>
           <Main>
-            <Timer>0:15:25</Timer>
+            <Timer>
+              <Separator />
+              0:15:25
+            </Timer>
             <Intro>{question.intro}</Intro>
             <Text>{question.text}</Text>
             <Answers>
@@ -85,15 +91,23 @@ class Question extends Component {
                 </Label>
               ))}
             </Answers>
-            <AnswerButtonContainer>
-              <RenderButton
-                type="button"
-                text="Ответить"
-                color="primary"
-                disabled={anythingChosen === undefined}
-                onClick={this.confirmAnswer}
-              />
-            </AnswerButtonContainer>
+
+            {hasAnswered ? (
+              <Result>
+                {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
+                <ButtonBack onClick={closeQuestionModal}>Следующий вопрос?</ButtonBack>
+              </Result>
+            ) : (
+              <AnswerButtonContainer>
+                <RenderButton
+                  type="button"
+                  text="Ответить"
+                  color="primary"
+                  disabled={anythingChosen === undefined}
+                  onClick={this.confirmAnswer}
+                />
+              </AnswerButtonContainer>
+            )}
           </Main>
         </Modal>
       </Wrapper>

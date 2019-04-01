@@ -47,7 +47,7 @@ const submitEmailCodeErrors = code => {
 const registerUserCodeErrors = code => {
   switch (code) {
     case 409:
-      return 'E-mail или никнейм не уникален'
+      return 'Никнейм не уникален'
     case 444:
       return 'Ошибка соединения с сервером'
 

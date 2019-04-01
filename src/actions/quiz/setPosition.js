@@ -14,7 +14,6 @@ const setPosition = state => async dispatch => {
   }
   const { data, status } = response
   if (status === 200) {
-    console.log(200)
     dispatch(getPosition())
   }
 

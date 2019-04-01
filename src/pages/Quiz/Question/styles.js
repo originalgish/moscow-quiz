@@ -13,6 +13,9 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 600px) {
     align-items: flex-start;
   }
+  @media screen and (max-height: 800px) {
+    align-items: flex-start;
+  }
 `
 export const Modal = styled.div`
   max-width: 900px;
@@ -22,7 +25,6 @@ export const Modal = styled.div`
 `
 export const Header = styled.header`
   display: flex;
-  align-items: center;
   justify-content: space-between;
   background-color: #d2992a;
   font-family: Helvetica;
@@ -68,16 +70,14 @@ export const Timer = styled.div`
   text-align: right;
   color: #ffffff;
   margin-top: 25px;
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 70%;
-    height: 2px;
-    background-color: #ffffff;
-  }
+  display: flex;
+  align-items: center;
+`
+export const Separator = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  margin-right: 10%;
 `
 export const Text = styled.p`
   font-family: Helvetica;
@@ -89,6 +89,7 @@ export const Text = styled.p`
 export const Intro = styled(Text)``
 export const Answers = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `
 export const Radio = styled.input`
   border: 0;
@@ -104,8 +105,17 @@ export const Radio = styled.input`
 export const Label = styled.label`
   width: 100%;
   display: flex;
-  align-content: stretch;
   flex: 1;
+  &:first-child {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+  @media screen and (max-width: 600px) {
+    &:first-child {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+  }
 `
 export const AnswerText = styled(Text)`
   text-align: center;
@@ -115,15 +125,9 @@ export const AnswerText = styled(Text)`
   display: flex;
   align-items: center;
   flex: 1;
-  margin: 0 10px;
   transition: 0.3s ease;
   position: relative;
-  &:first-child {
-    margin-right: 20px;
-  }
-  &:last-child {
-    margin-left: 20px;
-  }
+  margin: 0;
   &::before {
     content: '';
     position: absolute;
@@ -163,10 +167,30 @@ export const AnswerText = styled(Text)`
         return
     }
   }}
+  @media screen and (max-width: 600px) {
+    padding: 20px;
+    margin: 0 !important;
+  }
 `
 export const AnswerButtonContainer = styled.div`
   margin: 0 auto;
   margin-top: 25px;
   width: 50%;
   max-width: 300px;
+`
+export const Result = styled.span`
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+`
+export const ButtonBack = styled.button`
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-family: Helvetica;
+  font-size: 1em;
+  text-align: left;
+  color: #ffffff;
+  text-decoration: underline;
 `
