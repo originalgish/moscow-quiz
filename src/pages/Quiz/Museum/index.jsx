@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import SVGElements from './SVGElements'
-// import Lights from './Lights'
+import Lights from './Lights'
 
 import museum from './img/museum.png'
 import { FullScreenCenter } from '../../../styles/app/app'
@@ -43,16 +43,18 @@ class Museum extends Component {
     this.setState({ points })
   }
 
+  getAnsweredQuestions = () => this.props.answeredPositions.map(position => position.position)
+
   render() {
     const { points } = this.state
-    const { avaliablePositions, getQuestion } = this.props
+    const { avaliablePositions, getQuestion, answeredPositions } = this.props
 
     return (
       <FullScreenCenter>
         <MuseumContainer id="museum">
           <SVGElements />
 
-          {/* <Lights /> */}
+          <Lights answeredPositions={answeredPositions} getAnsweredQuestions={this.getAnsweredQuestions} />
           <MuseumImage src={museum} alt="museum" />
 
           <QuestionContainer>
@@ -64,6 +66,7 @@ class Museum extends Component {
                 disabled={!avaliablePositions.includes(point.id)}
                 data-id={point.id}
                 onClick={getQuestion}
+                hidden={this.getAnsweredQuestions().includes(point.id)}
               />
             ))}
           </QuestionContainer>

@@ -16,7 +16,6 @@ class Routes extends Component {
 
   render() {
     const { isAuthenticated } = this.props
-    console.log(isAuthenticated)
     return (
       <Router history={history}>
         <Switch>

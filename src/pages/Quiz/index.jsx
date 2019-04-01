@@ -55,7 +55,12 @@ class Quiz extends Component {
     const { avaliablePositions, answeredPositions, question, questionModalIsShown } = this.props
     return (
       <div>
-        <Museum avaliablePositions={avaliablePositions} getQuestion={this.getQuestion} question={question} />
+        <Museum
+          avaliablePositions={avaliablePositions}
+          getQuestion={this.getQuestion}
+          question={question}
+          answeredPositions={answeredPositions}
+        />
         <Menu logout={this.props.logout} />
         {questionModalIsShown && (
           <Question question={question} closeQuestionModal={this.closeQuestionModal} sendAnswer={this.sendAnswer} />

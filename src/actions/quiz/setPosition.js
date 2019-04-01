@@ -1,4 +1,4 @@
-import { SET_POSITION } from '../../constants'
+// import { SET_POSITION } from '../../constants'
 import { URLs, keys } from '../../keys'
 import { POST } from '../../api/fetch'
 import getPosition from './getPosition'
@@ -12,7 +12,7 @@ const setPosition = state => async dispatch => {
     data: await request.json(),
     status: request.status
   }
-  const { data, status } = response
+  const { status } = response
   if (status === 200) {
     dispatch(getPosition())
   }

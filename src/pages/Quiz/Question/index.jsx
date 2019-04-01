@@ -59,7 +59,6 @@ class Question extends Component {
 
   render() {
     const { question, closeQuestionModal } = this.props
-    console.log(question)
     const { answers } = this.state
     const anythingChosen = answers.find(answer => answer.answerState === 'chosen')
     const hasAnswered = answers.find(answer => answer.answerState === 'correct' || answer.answerState === 'incorrect')

@@ -1,20 +1,36 @@
 import React from 'react'
+import { difference } from 'lodash'
+
+import config from '../../../../config'
 
 import { Wrapper, LevelLight, WindowLight } from './styles'
 
-// const LEVELS = [0, 1, 2, 3, 4]
-const LEVELS = Array.from(Array(5).keys())
-const WINDOWS = Array.from(Array(13).keys())
+const Lights = ({ answeredPositions, getAnsweredQuestions }) => {
+  const getLightedLevels = () => {
+    const answeredQuestions = getAnsweredQuestions(answeredPositions)
+    const { levelWindowMapping } = config
 
-const Lights = () => (
-  <Wrapper>
-    {LEVELS.map(level => (
-      <LevelLight key={level} imageID={level} />
-    ))}
-    {WINDOWS.map(level => (
-      <WindowLight key={level} imageID={level} />
-    ))}
-  </Wrapper>
-)
+    const levelsArray = []
+    levelWindowMapping.forEach(level => {
+      const levelIncludesWindows = !difference(level.windows, answeredQuestions).length
+      if (levelIncludesWindows) {
+        levelsArray.push(level.levelID)
+      }
+    })
+
+    return levelsArray
+  }
+
+  return (
+    <Wrapper>
+      {getLightedLevels(answeredPositions).map(level => (
+        <LevelLight key={level} imageID={level} />
+      ))}
+      {getAnsweredQuestions(answeredPositions).map(level => (
+        <WindowLight key={level} imageID={level} />
+      ))}
+    </Wrapper>
+  )
+}
 
 export default Lights
