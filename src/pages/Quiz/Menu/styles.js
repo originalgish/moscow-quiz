@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const zoomIn = keyframes`
   from {
@@ -41,18 +42,20 @@ export const Table = styled.div`
   border-radius: 10px;
   transform-origin: top left;
   animation: ${zoomIn} 0.3s ease;
-`
-export const Row = styled.a`
   font-family: Helvetica;
   font-size: 20px;
   line-height: 1.43;
   text-align: center;
   color: #ffffff;
-  border-bottom: solid 1px #f0c330;
-  display: block;
-  padding: 8px 40px;
   max-width: 380px;
   background-color: #0e0e0e;
+  text-decoration: none;
+`
+export const Anchor = styled.a`
+  display: block;
+  color: #ffffff;
+  border-bottom: solid 1px #f0c330;
+  padding: 8px 40px;
   text-decoration: none;
   &:first-child {
     border-top-left-radius: 10px;
@@ -63,6 +66,38 @@ export const Row = styled.a`
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  &:hover {
+    background-color: #2e2e2e;
+  }
+`
+export const RouterLink = styled(Link)`
+  display: block;
+  color: #ffffff;
+  border-bottom: solid 1px #f0c330;
+  padding: 8px 40px;
+  text-decoration: none;
+  &:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  &:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  &:hover {
+    background-color: #2e2e2e;
+  }
+`
+export const Button = styled.button`
+  -webkit-appearance: none;
+  border: none;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+  color: #ffffff;
+  border-bottom: solid 1px #f0c330;
+  padding: 8px 40px;
   &:hover {
     background-color: #2e2e2e;
   }

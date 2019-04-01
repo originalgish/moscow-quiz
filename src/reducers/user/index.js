@@ -11,7 +11,7 @@ import {
 
 import { keys } from '../../keys'
 
-const isAuthenticated = localStorage.getItem(keys.accessToken) !== null
+const isAuthenticated = window.localStorage.getItem(keys.accessToken) !== null
 
 const initialState = {
   registrationStage: 'getPhoneCode',

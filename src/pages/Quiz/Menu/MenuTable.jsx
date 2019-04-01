@@ -1,20 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import { Table, Row } from './styles'
+import { Table, Anchor, RouterLink, Button } from './styles'
 
 const MenuTable = ({ removeTokenFromStorage, getLeaderboard }) => (
   <Table>
-    <Row href="/static/rules.pdf" target="_blank" rel="noopener noreferrer">
-      Правила
-    </Row>
-    <Row onClick={getLeaderboard}>Рейтинг</Row>
-    <Row href="/static/About_us.pdf" target="_blank" rel="noopener noreferrer">
+    <Anchor href="/static/rules.pdf" target="_blank" rel="noopener noreferrer">
+      <span>Правила</span>
+    </Anchor>
+    <Button onClick={getLeaderboard}>Рейтинг</Button>
+    <Anchor href="/static/About_us.pdf" target="_blank" rel="noopener noreferrer">
       О нас
-    </Row>
-    <Row as={Link} to="/" onClick={removeTokenFromStorage}>
+    </Anchor>
+    <RouterLink to="/" onClick={removeTokenFromStorage}>
       Выйти
-    </Row>
+    </RouterLink>
   </Table>
 )
 
