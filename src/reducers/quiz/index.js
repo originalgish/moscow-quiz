@@ -13,7 +13,7 @@ const initialState = {
   questionModalIsShown: false,
   totalTimeSpent: 0,
   leaderboardIsShown: false,
-  leaderboard: []
+  leaderboard: {}
 }
 
 const quiz = (state = initialState, { type, payload }) => {

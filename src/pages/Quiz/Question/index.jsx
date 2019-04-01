@@ -85,11 +85,12 @@ class Question extends Component {
   }
 
   render() {
-    const { question, closeQuestionModal } = this.props
+    const { question, closeQuestionModal, finishGame } = this.props
     const { answers, time } = this.state
     const anythingChosen = answers.find(answer => answer.answerState === 'chosen')
     const hasAnswered = answers.find(answer => answer.answerState === 'correct' || answer.answerState === 'incorrect')
     const hasAnsweredCorrect = answers.find(answer => answer.answerState === 'correct')
+    const isFinalQuestion = Number(question.id) === 12
     return (
       <Wrapper>
         <Modal>
@@ -118,10 +119,17 @@ class Question extends Component {
             </Answers>
 
             {hasAnswered ? (
-              <Result>
-                {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
-                <ButtonBack onClick={closeQuestionModal}>Следующий вопрос?</ButtonBack>
-              </Result>
+              isFinalQuestion ? (
+                <Result>
+                  {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
+                  <ButtonBack onClick={finishGame}>Перейти к рейтингу</ButtonBack>
+                </Result>
+              ) : (
+                <Result>
+                  {`Вы ответили ${hasAnsweredCorrect ? 'правильно! ' : 'неправильно. '}`}
+                  <ButtonBack onClick={closeQuestionModal}>Следующий вопрос</ButtonBack>
+                </Result>
+              )
             ) : (
               <AnswerButtonContainer>
                 <RenderButton

@@ -18,202 +18,9 @@ import {
   TableBody
 } from './styles'
 
-// const temp = [
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   },
-//   {
-//     correct_percent: 62,
-//     nickname: 'Tolya',
-//     total_time: 1644
-//   }
-// ]
-
 const getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('h:mm:ss')
 
-const Leaderboard = ({ leaderboard, closeLeaderboard }) => (
+const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeaderboard }) => (
   <Wrapper>
     <Modal>
       <Header>
@@ -225,10 +32,12 @@ const Leaderboard = ({ leaderboard, closeLeaderboard }) => (
         <InfoText>Вы успешно закончили квест.</InfoText>
         <InfoText>Ваш результат:</InfoText>
       </Info>
-      <Results>
-        <Time>0:15:25</Time>
-        <Percent>100%</Percent>
-      </Results>
+      {current_player && (
+        <Results>
+          <Time>{getFormattedSeconds(current_player.total_time)}</Time>
+          <Percent>{`${current_player.correct_percent}%`}</Percent>
+        </Results>
+      )}
       <Table>
         <TableBody>
           <Row>

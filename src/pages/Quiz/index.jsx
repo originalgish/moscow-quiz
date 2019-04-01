@@ -44,6 +44,11 @@ class Quiz extends Component {
     this.props.toggleLeaderboard(false)
   }
 
+  finishGame = () => {
+    this.props.toggleQuestionModal(false)
+    this.props.getLeaderboard()
+  }
+
   render() {
     const {
       avaliablePositions,
@@ -71,6 +76,7 @@ class Quiz extends Component {
             initialQuestionTime={initialQuestionTime}
             closeQuestionModal={this.closeQuestionModal}
             sendAnswer={this.sendAnswer}
+            finishGame={this.finishGame}
           />
         )}
         {leaderboardIsShown && <Leaderboard leaderboard={leaderboard} closeLeaderboard={this.closeLeaderboard} />}

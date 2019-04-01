@@ -7,9 +7,9 @@ objectFitImages()
 
 export const MuseumContainer = styled.div`
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 90%;
   height: 90%;
 `

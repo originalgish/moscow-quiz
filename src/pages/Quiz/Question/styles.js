@@ -17,15 +17,18 @@ export const Wrapper = styled.div`
 `
 export const Modal = styled.div`
   position: relative;
-  max-width: 900px;
-  /* height: 70%; */
+  max-width: 1000px;
+  max-height: 70%;
   border: solid 1px #d2992a;
   border-radius: 10px;
   background-color: #0e0e0e;
   overflow: hidden;
   padding-top: 3.5em;
+  display: flex;
+  flex-direction: column;
   @media screen and (max-height: 600px), screen and (max-width: 600px) {
     height: calc(100% - 3.5em);
+    max-height: 100%;
   }
 `
 export const Header = styled.header`
@@ -92,12 +95,7 @@ export const Timer = styled.div`
   text-align: right;
   color: #0e0e0e;
 `
-export const Separator = styled.div`
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff;
-  margin-right: 10%;
-`
+
 export const Text = styled.p`
   font-family: Helvetica;
   font-size: 1.2em;
@@ -134,6 +132,7 @@ export const Label = styled.label`
       margin-bottom: 20px;
       margin-right: 0;
     }
+    flex: auto;
   }
 `
 export const AnswerText = styled(Text)`

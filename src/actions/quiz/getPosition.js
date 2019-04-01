@@ -1,4 +1,4 @@
-import { GET_POSITION } from '../../constants'
+import { GET_POSITION, CHANGE_TOTAL_SPENT_TIME } from '../../constants'
 import { URLs, keys } from '../../keys'
 import { GET } from '../../api/fetch'
 
@@ -16,6 +16,10 @@ const getPosition = () => async dispatch => {
     dispatch({
       type: GET_POSITION,
       payload: data
+    })
+    dispatch({
+      type: CHANGE_TOTAL_SPENT_TIME,
+      payload: data.positions.total_time
     })
   }
 

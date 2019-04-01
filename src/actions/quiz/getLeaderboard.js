@@ -4,7 +4,6 @@ import { GET } from '../../api/fetch'
 
 const getLeaderboard = () => async dispatch => {
   // const url = `${URLs.mock200}`
-  console.log(123123)
   const token = localStorage.getItem(keys.accessToken)
   const url = `${URLs.production}/api/v1/get_leaderboard`
   const request = await GET(url, token)

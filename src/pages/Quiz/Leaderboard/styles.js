@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+import goal from './img/goal.svg'
+import clock from './img/clock.svg'
+
 export const Wrapper = styled.div`
   position: absolute;
   top: 0;
@@ -91,24 +94,50 @@ export const InfoText = styled.span`
 `
 export const Results = styled.div`
   display: flex;
+  /* flex-wrap: wrap; */
   width: 100%;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 30px;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 const ResultText = styled.span`
+  display: block;
   font-family: Helvetica;
   font-size: 3.5em;
   line-height: 0.67;
   text-align: left;
   color: #ffffff;
-  margin: 0 20px;
+  margin: 15px 0;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -70px;
+    transform: translate(0, -50%);
+    width: 55px;
+    height: 55px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  @media screen and (max-width: 600px) {
+    /* margin: 20px 60px; */
+  }
 `
-
-export const TimeIcon = styled.div``
-export const Time = styled(ResultText)``
-export const PercentIcon = styled.div``
-export const Percent = styled(ResultText)``
-
+export const Time = styled(ResultText)`
+  &::before {
+    background-image: url(${clock});
+  }
+`
+export const Percent = styled(ResultText)`
+  &::before {
+    background-image: url(${goal});
+  }
+`
 export const Table = styled.table`
   display: block;
   margin-top: 40px;
