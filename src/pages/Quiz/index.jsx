@@ -8,28 +8,9 @@ import { logout } from '../../actions/user'
 import Museum from './Museum'
 import Menu from './Menu'
 import Question from './Question'
+import Clock from './Clock'
 
-// const quests = {
-//   answers: [
-//     {
-//       correct: true,
-//       id: 0,
-//       text:
-//         'Нет! В наше время госзаказчики ОФИЦИАЛЬНО утратили такие важные инструменты воздействия на исполнителей, как «заставить одуматься» и «всеми силами склонять». Но! В некоторых случаях, предусмотренных Законом о контрактной системе, допустимо уменьшение цены контракта.'
-//     },
-//     {
-//       correct: false,
-//       id: 1,
-//       text:
-//         'Безусловно, данная черта регламентирована Законом о контрактной системе и широко используется госзаказчиками.'
-//     }
-//   ],
-//   id: '3',
-//   intro:
-//     'Говоря об истории госзакупок, нельзя не отметить указ российской императрицы Елизаветы Петровны – Регул провиантского правления, изданный в 1758 году. В нем особое внимание уделялось рекламе и публикации объявлений о торгах. В городах билеты с извещениями о публичных торгах размещались под бой барабанов. Они публиковались в газетах для привлечения внимания населения. В глубинке, куда газеты, конечно же, не доходили, и не был слышен «барабанный бой» царских гонцов, билеты с условиями торгов оглашали священники после церковной службы. Согласитесь, уже тогда формируются черты современной контрактной системы. Еще одна немаловажная особенность, отраженная в указе – «Победителя торгов следует «всеми силами склонять к еще большему уменьшению цены... изыскивая казенной прибыли без всякой передачи».',
-//   text:
-//     'Давайте подумаем и ответим, сохранилось ли законодательно СКЛОНЕНИЕ госзаказчиком победителя к еще большему уменьшению цены?'
-// }
+import { Wrapper } from './styles'
 
 class Quiz extends Component {
   state = {}
@@ -54,7 +35,7 @@ class Quiz extends Component {
   render() {
     const { avaliablePositions, answeredPositions, question, questionModalIsShown } = this.props
     return (
-      <div>
+      <Wrapper>
         <Museum
           avaliablePositions={avaliablePositions}
           getQuestion={this.getQuestion}
@@ -62,10 +43,11 @@ class Quiz extends Component {
           answeredPositions={answeredPositions}
         />
         <Menu logout={this.props.logout} />
+        <Clock />
         {questionModalIsShown && (
           <Question question={question} closeQuestionModal={this.closeQuestionModal} sendAnswer={this.sendAnswer} />
         )}
-      </div>
+      </Wrapper>
     )
   }
 }

@@ -18,8 +18,6 @@ export const MenuBurger = styled.button`
   left: 20px;
   width: 50px;
   height: 50px;
-  max-width: 60px;
-  max-height: 60px;
   border-radius: 10px;
   border: solid 1px #898989;
   padding: 8px;
