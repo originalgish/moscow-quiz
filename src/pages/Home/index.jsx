@@ -5,13 +5,13 @@ import { FullScreenCenter } from '../../styles/app/app'
 import { Wrapper, Title, City, InfoWrapper, Info, Navigation, NavLink } from './styles'
 
 const Home = () => (
-  <FullScreenCenter mobile={isMobile}>
+  <FullScreenCenter mobile={isMobile} greyCastle>
     <Wrapper>
       <Title>Закупочный квест</Title>
       <City>Москва</City>
       <InfoWrapper>
         <Info>
-          Приглашаем вас пройти наш закупочный квест. Вы познакомитесь с особенностями становления закупочной системы,
+          Приглашаем пройти наш закупочный квест. Вы познакомитесь с особенностями становления закупочной системы,
           узнаете интересные факты, окунетесь в атмосферу прошлых столетий и проверите свои знания.
         </Info>
         <Info>

@@ -45,7 +45,7 @@ export const InfoWrapper = styled.div`
 export const Info = styled.p`
   font-family: Helvetica;
   font-size: 1em;
-  line-height: 1.21;
+  line-height: 1.4;
   text-align: center;
   color: #ffffff;
   text-transform: uppercase;

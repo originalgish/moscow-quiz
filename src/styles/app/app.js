@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 import styled, { css } from 'styled-components'
 
 import castleRight from '../../img/castle-right.png'
+import castleGrey from '../../img/gcas10.png'
 
 import './normalize.css'
 import './fonts.css'
@@ -51,6 +52,14 @@ export const FullScreenCenter = styled.div`
       background-image: url(${castleRight});
       background-position: left bottom;
       background-size: 30%;
+      background-repeat: no-repeat;
+    `};
+  ${props =>
+    props.greyCastle &&
+    css`
+      background-image: url(${castleGrey});
+      background-position: bottom center;
+      background-size: 90%;
       background-repeat: no-repeat;
     `};
 `
