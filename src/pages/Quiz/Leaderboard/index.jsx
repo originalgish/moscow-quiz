@@ -18,207 +18,207 @@ import {
   TableBody
 } from './styles'
 
-const temp = [
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  },
-  {
-    correct_percent: 62,
-    nickname: 'Tolya',
-    total_time: 1644
-  }
-]
+// const temp = [
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   },
+//   {
+//     correct_percent: 62,
+//     nickname: 'Tolya',
+//     total_time: 1644
+//   }
+// ]
 
 const getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('h:mm:ss')
 
-const Leaderboard = ({ closeLeaderboardModal }) => (
+const Leaderboard = ({ leaderboard, closeLeaderboard }) => (
   <Wrapper>
     <Modal>
       <Header>
         <Title>Рейтинг</Title>
-        <CloseButton onClick={closeLeaderboardModal} />
+        <CloseButton onClick={closeLeaderboard} />
       </Header>
       <Info>
         <InfoText>Поздравляем!</InfoText>
@@ -237,7 +237,7 @@ const Leaderboard = ({ closeLeaderboardModal }) => (
             <Cell header>Время</Cell>
             <Cell header>Верные ответы</Cell>
           </Row>
-          {temp.map((postition, index) => (
+          {leaderboard.map((postition, index) => (
             <Row key={index}>
               <Cell>{index + 1}</Cell>
               <Cell>{postition.nickname}</Cell>

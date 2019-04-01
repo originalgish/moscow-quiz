@@ -43,7 +43,6 @@ export const Header = styled.header`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   width: calc(100% - 60px);
   z-index: 1;
   @media screen and (max-width: 600px) {

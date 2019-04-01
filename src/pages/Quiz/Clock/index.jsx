@@ -1,11 +1,14 @@
 import React from 'react'
+import { Duration } from 'luxon'
 
 import { Wrapper, ClockImage, Time } from './styles'
 
-const Clock = () => (
+const getFormattedSeconds = seconds => Duration.fromObject({ seconds }).toFormat('h:mm:ss')
+
+const Clock = ({ totalTimeSpent }) => (
   <Wrapper>
     <ClockImage>
-      <Time>00:25:18</Time>
+      <Time>{getFormattedSeconds(totalTimeSpent)}</Time>
     </ClockImage>
   </Wrapper>
 )

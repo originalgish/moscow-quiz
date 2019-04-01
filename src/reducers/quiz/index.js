@@ -1,9 +1,19 @@
-import { GET_POSITION, GET_QUESTION, TOGGLE_QUESTION_MODAL } from '../../constants'
+import {
+  GET_POSITION,
+  GET_QUESTION,
+  TOGGLE_QUESTION_MODAL,
+  CHANGE_TOTAL_SPENT_TIME,
+  TOGGLE_LEADERBOARD_MODAL,
+  GET_LEADERBOARD
+} from '../../constants'
 
 const initialState = {
   position: {},
   question: {},
-  questionModalIsShown: false
+  questionModalIsShown: false,
+  totalTimeSpent: 0,
+  leaderboardIsShown: false,
+  leaderboard: []
 }
 
 const quiz = (state = initialState, { type, payload }) => {
@@ -22,6 +32,21 @@ const quiz = (state = initialState, { type, payload }) => {
       return {
         ...state,
         questionModalIsShown: payload
+      }
+    case CHANGE_TOTAL_SPENT_TIME:
+      return {
+        ...state,
+        totalTimeSpent: payload
+      }
+    case TOGGLE_LEADERBOARD_MODAL:
+      return {
+        ...state,
+        leaderboardIsShown: payload
+      }
+    case GET_LEADERBOARD:
+      return {
+        ...state,
+        leaderboard: payload
       }
     default:
       return state

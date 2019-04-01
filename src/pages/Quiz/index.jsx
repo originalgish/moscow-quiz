@@ -2,14 +2,21 @@ import React, { Component } from 'react'
 import { get } from 'lodash'
 import { connect } from 'react-redux'
 
-import { getPosition, getQuestion, toggleQuestionModal, setPosition } from '../../actions/quiz'
+import {
+  getPosition,
+  getQuestion,
+  toggleQuestionModal,
+  setPosition,
+  toggleLeaderboard,
+  getLeaderboard
+} from '../../actions/quiz'
 import { logout } from '../../actions/user'
 
 import Museum from './Museum'
 import Menu from './Menu'
 import Question from './Question'
 import Clock from './Clock'
-// import Leaderboard from './Leaderboard'
+import Leaderboard from './Leaderboard'
 
 import { Wrapper } from './styles'
 
@@ -33,8 +40,21 @@ class Quiz extends Component {
     this.props.setPosition(answer)
   }
 
+  closeLeaderboard = () => {
+    this.props.toggleLeaderboard(false)
+  }
+
   render() {
-    const { avaliablePositions, answeredPositions, question, questionModalIsShown } = this.props
+    const {
+      avaliablePositions,
+      answeredPositions,
+      question,
+      initialQuestionTime,
+      questionModalIsShown,
+      totalTimeSpent,
+      leaderboardIsShown,
+      leaderboard
+    } = this.props
     return (
       <Wrapper>
         <Museum
@@ -43,12 +63,17 @@ class Quiz extends Component {
           question={question}
           answeredPositions={answeredPositions}
         />
-        <Menu logout={this.props.logout} />
-        <Clock />
+        <Menu logout={this.props.logout} getLeaderboard={this.props.getLeaderboard} />
+        <Clock totalTimeSpent={totalTimeSpent} />
         {questionModalIsShown && (
-          <Question question={question} closeQuestionModal={this.closeQuestionModal} sendAnswer={this.sendAnswer} />
+          <Question
+            question={question}
+            initialQuestionTime={initialQuestionTime}
+            closeQuestionModal={this.closeQuestionModal}
+            sendAnswer={this.sendAnswer}
+          />
         )}
-        {/* <Leaderboard /> */}
+        {leaderboardIsShown && <Leaderboard leaderboard={leaderboard} closeLeaderboard={this.closeLeaderboard} />}
       </Wrapper>
     )
   }
@@ -58,7 +83,11 @@ const mapStateToProps = state => ({
   avaliablePositions: get(state.quiz.position, 'positions.available_positions', []),
   answeredPositions: get(state.quiz.position, 'answered_positions', []),
   question: get(state.quiz.question, 'question', {}),
-  questionModalIsShown: state.quiz.questionModalIsShown
+  initialQuestionTime: get(state.quiz.question, 'time_spent', 0),
+  questionModalIsShown: state.quiz.questionModalIsShown,
+  totalTimeSpent: state.quiz.totalTimeSpent,
+  leaderboardIsShown: state.quiz.leaderboardIsShown,
+  leaderboard: state.quiz.leaderboard
 })
 
 const mapDispatchToProps = {
@@ -66,7 +95,9 @@ const mapDispatchToProps = {
   getQuestion,
   setPosition,
   toggleQuestionModal,
-  logout
+  logout,
+  toggleLeaderboard,
+  getLeaderboard
 }
 
 export default connect(

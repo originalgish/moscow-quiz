@@ -39,6 +39,8 @@ class Question extends Component {
     }))
     this.setState({ answers })
 
+    const initialTime = this.props.initialQuestionTime
+    this.setState({ time: initialTime })
     this.startTimer()
   }
 

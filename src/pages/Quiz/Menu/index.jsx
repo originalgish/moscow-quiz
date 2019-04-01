@@ -29,6 +29,10 @@ class Menu extends Component {
     this.props.logout()
   }
 
+  getLeaderboard = () => {
+    this.props.getLeaderboard()
+  }
+
   render() {
     const { menuIsOpen } = this.state
     return (
@@ -36,7 +40,9 @@ class Menu extends Component {
         <BurgerElement />
         <BurgerElement />
         <BurgerElement />
-        {menuIsOpen && <MenuTable removeTokenFromStorage={this.removeTokenFromStorage} />}
+        {menuIsOpen && (
+          <MenuTable removeTokenFromStorage={this.removeTokenFromStorage} getLeaderboard={this.getLeaderboard} />
+        )}
       </MenuBurger>
     )
   }
