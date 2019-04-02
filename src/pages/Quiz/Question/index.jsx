@@ -102,10 +102,12 @@ class Question extends Component {
     const isFinalQuestion = Number(question.id) === 12
     return (
       <Wrapper>
-        <Modal>
+        <Modal hasAnsweredCorrect={hasAnsweredCorrect} hasAnswered={hasAnswered}>
           <Header hasAnswered={hasAnswered} hasAnsweredCorrect={hasAnsweredCorrect}>
-            <Timer>{this.getFormattedSeconds(time)}</Timer>
-            <CloseButton onClick={closeQuestionModal} />
+            <Timer hasAnswered={hasAnswered} hasAnsweredCorrect={hasAnsweredCorrect}>
+              {this.getFormattedSeconds(time)}
+            </Timer>
+            <CloseButton onClick={closeQuestionModal} hasAnswered={hasAnswered} />
           </Header>
 
           <Main>

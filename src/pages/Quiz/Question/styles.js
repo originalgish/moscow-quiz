@@ -23,13 +23,43 @@ export const Modal = styled.div`
   border-radius: 10px;
   background-color: #0e0e0e;
   overflow: hidden;
-  padding-top: 3.5em;
+  padding-top: 5em;
   display: flex;
   flex-direction: column;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
   @media screen and (max-height: 600px), screen and (max-width: 600px) {
-    height: calc(100% - 3.5em);
+    height: calc(100% - 5em);
     max-height: 100%;
   }
+  ${props => {
+    if (props.hasAnswered && props.hasAnsweredCorrect) {
+      return css`
+        border-color: #889712;
+        &::before {
+          background-color: #889712;
+        }
+      `
+    }
+    if (props.hasAnswered && !props.hasAnsweredCorrect) {
+      return css`
+        border-color: #90221b;
+        &::before {
+          background-color: #90221b;
+        }
+      `
+    }
+  }}
 `
 export const Header = styled.header`
   display: flex;
@@ -48,16 +78,9 @@ export const Header = styled.header`
     border-radius: 0;
   }
   ${props => {
-    if (props.hasAnswered && props.hasAnsweredCorrect) {
+    if (props.hasAnswered) {
       return css`
-        background-color: #889712;
-        border-color: #889712;
-      `
-    }
-    if (props.hasAnswered && !props.hasAnsweredCorrect) {
-      return css`
-        background-color: #90221b;
-        border-color: #90221b;
+        background-color: transparent;
       `
     }
   }}
@@ -83,6 +106,16 @@ export const CloseButton = styled.button`
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+  ${props => {
+    if (props.hasAnswered) {
+      return css`
+        &::before,
+        &::after {
+          background-color: #d2992a;
+        }
+      `
+    }
+  }}
 `
 export const Main = styled.main`
   padding: 0 40px;
@@ -94,6 +127,18 @@ export const Timer = styled.div`
   font-size: 2.5em;
   text-align: right;
   color: #0e0e0e;
+  ${props => {
+    if (props.hasAnswered && props.hasAnsweredCorrect) {
+      return css`
+        color: #889712;
+      `
+    }
+    if (props.hasAnswered && !props.hasAnsweredCorrect) {
+      return css`
+        color: #90221b;
+      `
+    }
+  }}
 `
 
 export const Text = styled.p`
@@ -151,11 +196,11 @@ export const AnswerText = styled(Text)`
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     width: 20px;
     height: 100%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
   ${props => {
     switch (props.answerState) {
