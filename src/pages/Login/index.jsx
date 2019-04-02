@@ -12,7 +12,7 @@ import submit from './utils/submit'
 import validate from './utils/validate'
 
 import { FullScreenCenter } from '../../styles/app/app'
-import { LoginForm, Title, LoginContainer, RegisterCall, StyledLink } from './styles'
+import { LoginForm, Title, LoginContainer, RegisterCall, ForgotPassword, StyledLink } from './styles'
 
 class Login extends Component {
   state = {}
@@ -25,7 +25,7 @@ class Login extends Component {
   }
 
   render() {
-    const { handleSubmit, valid, submitting, loginErrorText } = this.props
+    const { handleSubmit, valid, submitting, loginErrorText, hasResetPassword } = this.props
     return (
       <FullScreenCenter withImage>
         <LoginContainer>
@@ -38,13 +38,13 @@ class Login extends Component {
             <Field name="email" component={RenderTextField} label="E-mail" type="text" />
             <Field name="password" component={RenderTextFieldPassword} label="Пароль" labelWidth={58} />
             <RenderButton type="submit" disabled={!valid || submitting} text="Войти" color="primary" />
-
-            {/* <ForgotPassword>
+            <ForgotPassword>
               Забыли пароль? <StyledLink to="/reset_password">Напомнить</StyledLink>
-            </ForgotPassword> */}
+            </ForgotPassword>
           </LoginForm>
         </LoginContainer>
         {loginErrorText && <RenderSnackbar variant="error" message={loginErrorText} />}
+        {hasResetPassword && <RenderSnackbar variant="success" message="Мы выслали Вам на почту новый пароль" />}
       </FullScreenCenter>
     )
   }
@@ -58,7 +58,8 @@ Login = reduxForm({
 
 const mapStateToProps = state => ({
   registrationEmail: get(state.form, 'ConfirmEmail.values.email'),
-  loginErrorText: state.user.loginErrorText
+  loginErrorText: state.user.loginErrorText,
+  hasResetPassword: state.user.hasResetPassword
 })
 
 const mapDispatchToProps = {

@@ -65,11 +65,21 @@ const loginErrors = code => {
   }
 }
 
+const resetPasswordsErrors = code => {
+  switch (code) {
+    case 409:
+      return 'E-mail не зарегистрирован'
+    default:
+      return 'Произошла ошибка, попробуйте снова'
+  }
+}
+
 export {
   getPhoneCodeErrors,
   submitCodeErrors,
   getEmailCodeErrors,
   submitEmailCodeErrors,
   registerUserCodeErrors,
-  loginErrors
+  loginErrors,
+  resetPasswordsErrors
 }

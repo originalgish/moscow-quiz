@@ -6,6 +6,7 @@ import registerUser from './registerUser'
 import changeRegistrationStage from './changeRegistrationStage'
 import login from './login'
 import logout from './logout'
+import resetPassword from './resetPassword'
 
 export {
   getPhoneCode,
@@ -15,5 +16,6 @@ export {
   registerUser,
   changeRegistrationStage,
   login,
-  logout
+  logout,
+  resetPassword
 }

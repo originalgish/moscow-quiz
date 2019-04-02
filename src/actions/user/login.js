@@ -5,10 +5,6 @@ import { POST } from '../../api/fetch'
 import { loginErrors } from '../../api/errorCodes'
 
 const login = state => async dispatch => {
-  dispatch({
-    type: LOGIN_ERROR,
-    payload: ''
-  })
   // const url = `${URLs.mock200}`
   const url = `${URLs.production}/api/v1/login`
   const request = await POST(url, state)
@@ -31,6 +27,12 @@ const login = state => async dispatch => {
       type: LOGIN_ERROR,
       payload: loginErrors(status)
     })
+    setTimeout(() => {
+      dispatch({
+        type: LOGIN_ERROR,
+        payload: ''
+      })
+    }, 2000)
   }
 
   console.log(data, status)

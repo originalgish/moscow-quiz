@@ -6,7 +6,9 @@ import {
   SUBMIT_EMAIL_CODE_ERROR,
   REGISTER_USER_ERROR,
   LOGIN_ERROR,
-  AUTH_USER
+  AUTH_USER,
+  RESET_PASSWORD_ERROR,
+  HAS_RESET_PASSWORD
 } from '../../constants'
 
 import { keys } from '../../keys'
@@ -15,7 +17,8 @@ const isAuthenticated = window.localStorage.getItem(keys.accessToken) !== null
 
 const initialState = {
   registrationStage: 'getPhoneCode',
-  isAuthenticated
+  isAuthenticated,
+  hasResetPassword: false
 }
 
 const user = (state = initialState, { type, payload }) => {
@@ -59,6 +62,16 @@ const user = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isAuthenticated: payload
+      }
+    case RESET_PASSWORD_ERROR:
+      return {
+        ...state,
+        resetPasswordError: payload
+      }
+    case HAS_RESET_PASSWORD:
+      return {
+        ...state,
+        hasResetPassword: payload
       }
 
     default:

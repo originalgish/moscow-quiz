@@ -36,8 +36,9 @@ export const Title = styled.h1`
   ${Text}
 `
 export const FormTitle = styled(Text)`
+  line-height: 1.3;
+  font-size: 1em;
   margin-bottom: 1em;
-  font-size: 1.2em;
 `
 export const BackToLogin = styled(Text)``
 export const StyledLink = styled(Link)`

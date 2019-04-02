@@ -1,5 +1,5 @@
-const submit = async (state, dispatch, props) => {
-  console.log(state)
-}
+import { resetPassword } from '../../../actions/user'
+
+const submit = (state, dispatch) => dispatch(resetPassword(state))
 
 export default submit

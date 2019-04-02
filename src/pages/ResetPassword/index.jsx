@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form'
 
 import RenderTextField from '../../components/RenderTextField'
 import RenderButton from '../../components/RenderButton'
+import RenderSnackbar from '../../components/RenderSnackbar'
 
 import submit from './utils/submit'
 import validate from './utils/validate'
@@ -15,13 +16,13 @@ class ResetPassword extends Component {
   state = {}
 
   render() {
-    const { handleSubmit, valid, submitting } = this.props
+    const { handleSubmit, valid, submitting, resetPasswordError } = this.props
     return (
       <FullScreenCenter withImage>
         <ResetPasswordContainer>
           <Title>Московский закупочный квест</Title>
           <ResetPasswordForm onSubmit={handleSubmit}>
-            <FormTitle>Введите данные для регистрации</FormTitle>
+            <FormTitle>Введите E-mail для восстановления пароля</FormTitle>
 
             <Field name="email" component={RenderTextField} label="E-mail" type="text" />
             <RenderButton type="submit" disabled={!valid || submitting} text="Напомнить пароль" color="primary" />
@@ -31,6 +32,7 @@ class ResetPassword extends Component {
             </BackToLogin>
           </ResetPasswordForm>
         </ResetPasswordContainer>
+        {resetPasswordError && <RenderSnackbar variant="error" message={resetPasswordError} />}
       </FullScreenCenter>
     )
   }
@@ -42,7 +44,9 @@ ResetPassword = reduxForm({
   validate
 })(ResetPassword)
 
-const mapStateToProps = () => ({})
+const mapStateToProps = state => ({
+  resetPasswordError: state.user.resetPasswordError
+})
 
 const mapDispatchToProps = {}
 
