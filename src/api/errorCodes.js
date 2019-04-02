@@ -14,8 +14,10 @@ const submitCodeErrors = code => {
   switch (code) {
     case 401:
       return 'Неправильно введен код'
+    case 408:
+      return 'Попробуйте повторить через минуту'
     case 409:
-      return 'Произошла ошибка, попробуйте через минуту'
+      return 'Телефон уже подтвержден'
 
     default:
       return 'Произошла ошибка, попробуйте снова'
