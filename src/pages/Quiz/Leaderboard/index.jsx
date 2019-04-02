@@ -27,11 +27,13 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
         <Title>Рейтинг</Title>
         <CloseButton onClick={closeLeaderboard} />
       </Header>
-      <Info>
-        <InfoText>Поздравляем!</InfoText>
-        <InfoText>Вы успешно закончили квест.</InfoText>
-        <InfoText>Ваш результат:</InfoText>
-      </Info>
+      {current_player && (
+        <Info>
+          <InfoText>Поздравляем!</InfoText>
+          <InfoText>Вы успешно закончили квест.</InfoText>
+          <InfoText>Ваш результат:</InfoText>
+        </Info>
+      )}
       {current_player && (
         <Results>
           <Time>{getFormattedSeconds(current_player.total_time)}</Time>
