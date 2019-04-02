@@ -2,7 +2,7 @@ import React from 'react'
 import { isMobile } from 'react-device-detect'
 
 import { FullScreenCenter } from '../../styles/app/app'
-import { Wrapper, Title, City, InfoWrapper, Info, Navigation, NavLink, Support } from './styles'
+import { Wrapper, Title, City, InfoWrapper, Info, Navigation, NavLink } from './styles'
 
 const Home = () => (
   <FullScreenCenter mobile={isMobile} greyCastle>
