@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 `
 export const Modal = styled.div`
   position: relative;
-  max-width: 900px;
+  max-width: 1000px;
   width: 100%;
   height: 80%;
   border: solid 1px #d2992a;

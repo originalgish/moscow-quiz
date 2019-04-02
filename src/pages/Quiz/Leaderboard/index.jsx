@@ -45,6 +45,7 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
           <Row>
             <Cell header>#</Cell>
             <Cell header>Никнейм</Cell>
+            <Cell header>Город</Cell>
             <Cell header>Время</Cell>
             <Cell header>Верные ответы</Cell>
           </Row>
@@ -52,6 +53,7 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
             <Row key={index}>
               <Cell>{index + 1}</Cell>
               <Cell>{postition.nickname}</Cell>
+              <Cell>{postition.city}</Cell>
               <Cell>{getFormattedSeconds(postition.total_time)}</Cell>
               <Cell>{`${postition.correct_percent}%`}</Cell>
             </Row>
