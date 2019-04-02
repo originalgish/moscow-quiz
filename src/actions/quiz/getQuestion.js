@@ -1,4 +1,5 @@
 import { GET_QUESTION, TOGGLE_QUESTION_MODAL } from '../../constants'
+import history from '../../routes/history'
 import { URLs, keys } from '../../keys'
 import { POST } from '../../api/fetch'
 
@@ -21,6 +22,8 @@ const getQuestion = state => async dispatch => {
       type: TOGGLE_QUESTION_MODAL,
       payload: true
     })
+  } else {
+    history.push('/login')
   }
 
   return request

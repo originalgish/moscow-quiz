@@ -11,18 +11,19 @@ const zoomIn = keyframes`
     opacity: 1;
   }
 `
-export const MenuBurger = styled.button`
-  -webkit-appearance: none;
-  background-color: transparent;
+export const MenuBurger = styled.div`
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 50px;
-  height: 50px;
+  width: 32px;
+  height: 32px;
   border-radius: 10px;
   border: solid 1px #898989;
   padding: 8px;
   outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 export const BurgerElement = styled.div`
   background-color: #f0c330;
@@ -61,11 +62,6 @@ export const Anchor = styled.a`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-  &:last-child {
-    border-bottom: none;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
   &:hover {
     background-color: #2e2e2e;
   }
@@ -76,10 +72,6 @@ export const RouterLink = styled(Link)`
   border-bottom: solid 1px #f0c330;
   padding: 8px 40px;
   text-decoration: none;
-  &:first-child {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
   &:last-child {
     border-bottom: none;
     border-bottom-left-radius: 10px;

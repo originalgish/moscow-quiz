@@ -1,4 +1,5 @@
 import { GET_POSITION, CHANGE_TOTAL_SPENT_TIME } from '../../constants'
+import history from '../../routes/history'
 import { URLs, keys } from '../../keys'
 import { GET } from '../../api/fetch'
 
@@ -21,6 +22,8 @@ const getPosition = () => async dispatch => {
       type: CHANGE_TOTAL_SPENT_TIME,
       payload: data.positions.total_time
     })
+  } else {
+    history.push('/login')
   }
 
   return request

@@ -1,4 +1,5 @@
 import { GET_LEADERBOARD, TOGGLE_LEADERBOARD_MODAL } from '../../constants'
+import history from '../../routes/history'
 import { URLs, keys } from '../../keys'
 import { GET } from '../../api/fetch'
 
@@ -21,6 +22,8 @@ const getLeaderboard = () => async dispatch => {
       type: TOGGLE_LEADERBOARD_MODAL,
       payload: true
     })
+  } else {
+    history.push('/login')
   }
 
   return request
