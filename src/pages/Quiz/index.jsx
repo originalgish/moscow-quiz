@@ -17,8 +17,9 @@ import Menu from './Menu'
 import Question from './Question'
 import Clock from './Clock'
 import Leaderboard from './Leaderboard'
+import Progress from './Progress'
 
-import { Wrapper } from './styles'
+import { Wrapper, UserInfoContainer } from './styles'
 
 class Quiz extends Component {
   state = {}
@@ -69,7 +70,10 @@ class Quiz extends Component {
           answeredPositions={answeredPositions}
         />
         <Menu logout={this.props.logout} getLeaderboard={this.props.getLeaderboard} />
-        <Clock totalTimeSpent={totalTimeSpent} />
+        <UserInfoContainer>
+          <Clock totalTimeSpent={totalTimeSpent} />
+          <Progress answeredPositions={answeredPositions} />
+        </UserInfoContainer>
         {questionModalIsShown && (
           <Question
             question={question}
