@@ -95,7 +95,9 @@ class ConfirmPhone extends Component {
               {...phoneMask}
             />
             {submitCodeStage && (
-              <SumbitAnotherPhone onClick={this.backToGetCodeStage}>Указать другой номер</SumbitAnotherPhone>
+              <SumbitAnotherPhone type="button" onClick={this.backToGetCodeStage}>
+                Указать другой номер
+              </SumbitAnotherPhone>
             )}
 
             {submitCodeStage && (
