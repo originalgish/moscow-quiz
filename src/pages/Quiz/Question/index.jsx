@@ -82,6 +82,15 @@ class Question extends Component {
     }
     this.props.sendAnswer(requestBody)
     this.stopTimer()
+    if (!isChosenAnswerCorrect) {
+      this.addPenaltyTime()
+    }
+  }
+
+  addPenaltyTime = () => {
+    const { time } = this.state
+    const penaltyTime = 300
+    this.setState({ time: time + penaltyTime })
   }
 
   render() {
