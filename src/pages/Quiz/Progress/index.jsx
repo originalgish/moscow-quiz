@@ -30,7 +30,7 @@ const Progress = ({ answeredPositions }) => (
   <Wrapper>
     <Text>{`${getProgressValues(answeredPositions).correctAnswersAmount} верно`}</Text>
     <Text>{`${getProgressValues(answeredPositions).incorrectAnswersAmount} неверно`}</Text>
-    {answeredPositions.length < QUESTIONS_AMOUNT && (
+    {answeredPositions.length < QUESTIONS_AMOUNT && answeredPositions.length !== 0 && (
       <Text>{`${getProgressValues(answeredPositions).answersLeft} осталось`}</Text>
     )}
   </Wrapper>
