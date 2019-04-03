@@ -36,11 +36,13 @@ export const Modal = styled.div`
     height: 100%;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    z-index: 2;
   }
 
   @media screen and (max-height: 600px), screen and (max-width: 600px) {
     height: calc(100% - 5em);
     max-height: 100%;
+    border-radius: 0;
   }
   ${props => {
     if (props.hasAnswered && props.hasAnsweredCorrect) {
@@ -68,6 +70,7 @@ export const Header = styled.header`
   background-color: #d2992a;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  border-bottom: solid 1px #d2992a;
   padding: 10px 20px 10px 40px;
   position: absolute;
   top: 0;

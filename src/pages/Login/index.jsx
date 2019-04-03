@@ -44,7 +44,7 @@ class Login extends Component {
           </LoginForm>
         </LoginContainer>
         {loginErrorText && <RenderSnackbar variant="error" message={loginErrorText} />}
-        {hasResetPassword && <RenderSnackbar variant="success" message="Мы выслали Вам на почту новый пароль" />}
+        {hasResetPassword && <RenderSnackbar variant="success" message="Мы выслали пароль Вам на почту" />}
       </FullScreenCenter>
     )
   }
