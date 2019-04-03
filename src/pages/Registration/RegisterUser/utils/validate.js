@@ -25,7 +25,7 @@ const validate = values => {
 
   if (!values.city) {
     errors.city = 'Обязательное поле'
-  } else if (/[^а-яё ]/i.test(values.city)) {
+  } else if (/[^а-яё 0-9-–]/i.test(values.city)) {
     errors.city = 'Город должен быть написан кириллицей'
   }
 
@@ -43,7 +43,6 @@ const validate = values => {
   }
 
   if (values.password && values.confirmPassword && values.password !== values.confirmPassword) {
-    // errors.password = 'Пароли не совпадают'
     errors.confirmPassword = 'Пароли не совпадают'
   }
   if (!values.policyCheckbox) {
