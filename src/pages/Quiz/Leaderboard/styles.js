@@ -27,12 +27,12 @@ export const Modal = styled.div`
   border-radius: 10px;
   background-color: #0e0e0e;
   overflow: hidden;
-  padding: 3.5em 40px 0 40px;
+  padding: 3em 40px 0 40px;
   display: flex;
   flex-direction: column;
   @media screen and (max-height: 600px), screen and (max-width: 600px) {
-    height: calc(100% - 3.5em);
-    padding: 3.5em 0 0 0;
+    height: calc(100% - 3em);
+    padding: 3em 0 0 0;
   }
 `
 export const Header = styled.header`
@@ -42,7 +42,7 @@ export const Header = styled.header`
   background-color: #d2992a;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  padding: 10px 20px 10px 40px;
+  padding: 5px 20px 5px 40px;
   position: absolute;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@ export const Results = styled.div`
   /* flex-wrap: wrap; */
   width: 100%;
   justify-content: space-around;
-  margin-top: 30px;
+  margin-top: 10px;
   @media screen and (max-width: 600px) {
     flex-direction: column;
     justify-content: center;
@@ -107,7 +107,7 @@ export const Results = styled.div`
 const ResultText = styled.span`
   display: block;
   font-family: Helvetica;
-  font-size: 3.5em;
+  font-size: 3em;
   line-height: 0.67;
   text-align: left;
   color: #ffffff;
@@ -140,7 +140,7 @@ export const Percent = styled(ResultText)`
 `
 export const Table = styled.table`
   display: block;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 5px;
   height: 100%;
   overflow: auto;

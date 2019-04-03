@@ -40,11 +40,11 @@ export const City = styled.h2`
   margin-top: 20px;
 `
 export const InfoWrapper = styled.div`
-  margin-top: 120px;
+  margin-top: 60px;
 `
 export const Info = styled.p`
   font-family: Helvetica;
-  font-size: 1em;
+  font-size: ${props => (props.bigFont ? '1.5em' : '1em')};
   line-height: 1.4;
   text-align: center;
   color: #ffffff;

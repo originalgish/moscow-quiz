@@ -24,7 +24,7 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
   <Wrapper>
     <Modal>
       <Header>
-        <Title>Рейтинг</Title>
+        <Title>Окончателный рейтинг</Title>
         <CloseButton onClick={closeLeaderboard} />
       </Header>
       {current_player && (
@@ -40,6 +40,10 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
           <Percent>{`${current_player.correct_percent}%`}</Percent>
         </Results>
       )}
+      <Info>
+        <InfoText>Квест завершен. Спасибо за участие!</InfoText>
+      </Info>
+
       <Table>
         <TableBody>
           <Row>
