@@ -24,7 +24,7 @@ const Leaderboard = ({ leaderboard: { leaderboard, current_player }, closeLeader
   <Wrapper>
     <Modal>
       <Header>
-        <Title>Окончателный рейтинг</Title>
+        <Title>Окончательный рейтинг</Title>
         <CloseButton onClick={closeLeaderboard} />
       </Header>
       {current_player && (
